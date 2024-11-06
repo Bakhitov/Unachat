@@ -8,6 +8,16 @@ import { stripe } from "@/lib/stripe"
 export async function getUserSubscriptionPlan(
     userId: string
 ): Promise<UserSubscriptionPlan> {
+    // Проверка на PRO пользователя
+    if (process.env.PRO_USER_ID && userId === process.env.PRO_USER_ID) {
+        return {
+            ...proPlan,
+            stripeSubscriptionId: 'pro_access',
+            stripeCurrentPeriodEnd: new Date('2099-12-31').getTime(),
+            stripeCustomerId: 'pro_access',
+            stripePriceId: 'pro_access'
+        }
+    }
     const user = await db.user.findFirst({
         where: {
             id: userId,
