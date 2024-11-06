@@ -20,6 +20,10 @@ const nextConfig = {
         ]
       }
     ]
+  },
+  sentry: {
+    disableServerWebpackPlugin: true,
+    disableClientWebpackPlugin: true,
   }
 };
 
