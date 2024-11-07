@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/chatbots/[chatbotId]/chat": {
+      "maxDuration": 60
+    }
+  }
+} 

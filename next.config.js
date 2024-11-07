@@ -23,6 +23,9 @@ const nextConfig = {
   sentry: {
     disableServerWebpackPlugin: true,
     disableClientWebpackPlugin: true,
+  },
+  serverRuntimeConfig: {
+    maxDuration: 60 // Устанавливаем максимальное время выполнения в 60 секунд
   }
 };
 
