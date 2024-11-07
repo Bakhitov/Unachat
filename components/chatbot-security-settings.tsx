@@ -19,10 +19,9 @@ import {
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { advancedSettingsSecurityFormSchema, advancedSettingsSecuritySchema } from "@/lib/validations/advancedSettings"
+import { advancedSettingsSecurityFormSchema } from "@/lib/validations/advancedSettings"
 import { Tag, TagInput } from 'emblor';
 import { Switch } from "@/components/ui/switch"
-
 
 interface ChatbotFormProps extends React.HTMLAttributes<HTMLFormElement> {
     chatbot: Chatbot
@@ -53,7 +52,7 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
     useEffect(() => {
         setAllowedIPs(chatbot.allowedIpRanges.map((ip, index) => ({ id: index.toString(), text: ip, label: ip, value: ip })))
         setBannedIPs(chatbot.bannedIps.map((ip, index) => ({ id: index.toString(), text: ip, label: ip, value: ip })))
-    }, [])
+    }, [chatbot.allowedIpRanges, chatbot.bannedIps])
 
     async function onSubmit(data: FormData) {
         setIsSaving(true)
@@ -73,7 +72,6 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
         setIsSaving(false)
 
         if (!response?.ok) {
-
             if (response.status === 400) {
                 return toast({
                     title: "Something went wrong.",
@@ -128,10 +126,10 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
                                             tags={bannedIps}
                                             className="sm:min-w-[450px]"
                                             inlineTags={false}
-                                            setTags={(newTags) => {
-                                                console.log(newTags)
-                                                setBannedIPs(newTags)
-                                                setValue('bannedIps', newTags as [Tag, ...Tag[]])
+                                            setTags={(tags: Tag[] | ((prevTags: Tag[]) => Tag[])) => {
+                                                const newTags = Array.isArray(tags) ? tags : tags(bannedIps);
+                                                setBannedIPs(newTags);
+                                                setValue('bannedIps', newTags.map(tag => tag.text));
                                             }}
                                             activeTagIndex={bannedIPsActiveTagIndex}
                                             setActiveTagIndex={setBannedIpsActiveTagIndex}
@@ -181,9 +179,10 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
                                             tags={allowedIPs}
                                             className="sm:min-w-[450px]"
                                             inlineTags={false}
-                                            setTags={(newTags) => {
-                                                setAllowedIPs(newTags)
-                                                setValue('allowedIpRanges', newTags as [Tag, ...Tag[]])
+                                            setTags={(tags: Tag[] | ((prevTags: Tag[]) => Tag[])) => {
+                                                const newTags = Array.isArray(tags) ? tags : tags(allowedIPs);
+                                                setAllowedIPs(newTags);
+                                                setValue('allowedIpRanges', newTags.map(tag => tag.text));
                                             }}
                                             activeTagIndex={allowedIPsActiveTagIndex}
                                             setActiveTagIndex={setAllowedIpsActiveTagIndex}

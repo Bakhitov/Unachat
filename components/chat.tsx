@@ -30,6 +30,10 @@ interface ChatbotProps {
   clientSidePrompt?: string
 }
 
+interface ChatError {
+  message: string;
+}
+
 export function Chat({ chatbot, defaultMessage, className, withExitX = false, clientSidePrompt, ...props }: ChatbotProps) {
   const [open, setOpen] = useState(false);
 
@@ -54,7 +58,6 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
 
     setFileUploaded(false)
     if (inputFileRef.current) {
-
       inputFileRef.current.value = '';
     }
   }
@@ -67,8 +70,8 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
     }
   }, [status])
 
-  const containerRef = useRef(null);
-  const inputRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const [fileUploaded, setFileUploaded] = useState(false);
 
@@ -77,7 +80,7 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
       console.log(error)
       toast({
         title: 'Error',
-        description: error.message,
+        description: (error as ChatError).message,
         variant: 'destructive'
       })
     }
@@ -85,7 +88,10 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
 
   useEffect(() => {
     // Scroll to the bottom of the container on messages update
-    document.documentElement.scrollTop = document.getElementById("end").offsetTop;
+    const endElement = document.getElementById("end");
+    if (endElement) {
+      document.documentElement.scrollTop = endElement.offsetTop;
+    }
   }, [messages]);
 
   async function handleInquirySubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -126,10 +132,10 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
   }
 
   useEffect(() => {
-    if (defaultMessage !== '') {
-      input === '' && handleInputChange({ target: { value: defaultMessage } } as React.ChangeEvent<HTMLInputElement>);
+    if (defaultMessage !== '' && input === '') {
+      handleInputChange({ target: { value: defaultMessage } } as React.ChangeEvent<HTMLTextAreaElement>);
     }
-  }, [])
+  }, [defaultMessage, input, handleInputChange])
 
   function closeChat() {
     window.parent.postMessage('closeChat', '*')
@@ -309,7 +315,9 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
                       </span>
                     </div>
                     <Button type="button" variant="ghost" className="flex-shrink-0" onClick={() => {
-                      inputFileRef.current!.value = '';
+                      if (inputFileRef.current) {
+                        inputFileRef.current.value = '';
+                      }
                       setFileUploaded(false);
                     }}>
                       <Icons.close className="text-gray-400 w-4 h-4" />

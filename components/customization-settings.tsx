@@ -28,7 +28,6 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
 import { Label } from "./ui/label"
 import { Switch } from "./ui/switch"
 
-
 interface ChatbotOperationsProps {
     chatbot: Chatbot
 }
@@ -62,12 +61,12 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
     })
 
     useEffect(() => {
-        form.setValue("chatTitle", chatbot.chatTitle)
-        form.setValue("chatMessagePlaceHolder", chatbot.chatMessagePlaceHolder)
-        form.setValue("chatInputStyle", chatbot.chatInputStyle)
-        form.setValue('chatHistoryEnabled', chatbot.chatHistoryEnabled)
+        const { setValue } = form;
+        setValue("chatTitle", chatbot.chatTitle)
+        setValue("chatMessagePlaceHolder", chatbot.chatMessagePlaceHolder)
+        setValue("chatInputStyle", chatbot.chatInputStyle)
+        setValue('chatHistoryEnabled', chatbot.chatHistoryEnabled)
 
-        // get the colors from the chatbot
         setBubbleColor(chatbot.bubbleColor)
         setBubbleLogoColor(chatbot.bubbleTextColor)
         setChatHeaderBackgroundColor(chatbot.chatHeaderBackgroundColor)
@@ -79,11 +78,23 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
         if (chatbot.chatbotLogoURL) {
             setUseDefaultImage(false)
         }
-    }, [chatbot.id])
+    }, [
+        chatbot.chatTitle,
+        chatbot.chatMessagePlaceHolder,
+        chatbot.chatInputStyle,
+        chatbot.chatHistoryEnabled,
+        chatbot.bubbleColor,
+        chatbot.bubbleTextColor,
+        chatbot.chatHeaderBackgroundColor,
+        chatbot.chatHeaderTextColor,
+        chatbot.userReplyBackgroundColor,
+        chatbot.userReplyTextColor,
+        chatbot.chatbotLogoURL,
+        form
+    ])
 
     useEffect(() => {
         if (inputFileRef.current?.files && inputFileRef.current.files.length > 0) {
-            console.log(inputFileRef.current.files[0])
             setUseDefaultImage(false)
         }
     }, [inputFileRef.current?.files])
@@ -130,7 +141,6 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
         setIsSaving(false)
 
         if (!response?.ok) {
-
             if (response.status === 400) {
                 return toast({
                     title: "Something went wrong.",

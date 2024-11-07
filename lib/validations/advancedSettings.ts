@@ -6,7 +6,9 @@ export const advancedSettingsSchema = z.object({
 })
 
 export const advancedSettingsSecurityFormSchema = z.object({
+    bannedIps: z.array(z.string()).optional(),
     allowEveryone: z.boolean().optional(),
+    allowedIpRanges: z.array(z.string()).optional(),
 })
 
 export const advancedSettingsSecuritySchema = z.object({

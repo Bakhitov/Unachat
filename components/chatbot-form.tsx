@@ -36,16 +36,16 @@ interface ChatbotFormProps extends React.HTMLAttributes<HTMLFormElement> {
 
 type FormData = z.infer<typeof chatbotSchema>
 
-export function ChatbotForm({ chatbot, currentFiles, models, files, className, ...props }: ChatbotFormProps) {
+export function ChatbotForm({ chatbot, currentFiles, models, files, className, user, ...props }: ChatbotFormProps) {
     const router = useRouter()
     const form = useForm<FormData>({
         resolver: zodResolver(chatbotSchema),
         defaultValues: {
-            name: chatbot.name,
-            openAIKey: chatbot.openaiKey,
-            welcomeMessage: chatbot.welcomeMessage,
-            chatbotErrorMessage: chatbot.chatbotErrorMessage,
-            prompt: chatbot.prompt,
+            name: chatbot.name || '',
+            openAIKey: chatbot.openaiKey || '',
+            welcomeMessage: chatbot.welcomeMessage || '',
+            chatbotErrorMessage: chatbot.chatbotErrorMessage || '',
+            prompt: chatbot.prompt || '',
             modelId: chatbot.modelId!,
             files: currentFiles,
             rightToLeftLanguage: chatbot.rightToLeftLanguage,
@@ -55,23 +55,23 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
     const [availablesModels, setAvailablesModels] = useState<string[]>([])
 
     useEffect(() => {
-        const init = async () => {
+        async function getAvailableModels() {
+            const response = await fetch(`/api/users/${user.id}/openai/models`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            const models = await response.json()
+            return models
+        }
+
+        async function init() {
             const supportedModels = await getAvailableModels()
             setAvailablesModels(supportedModels)
         }
         init()
-    }, [])
-
-    async function getAvailableModels() {
-        const response = await fetch(`/api/users/${props.user.id}/openai/models`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        const models = await response.json()
-        return models
-    }
+    }, [user.id])
 
     async function onSubmit(data: FormData) {
         console.log(data)
@@ -97,7 +97,6 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
         setIsSaving(false)
 
         if (!response?.ok) {
-
             if (response.status === 400) {
                 return toast({
                     title: "Something went wrong.",
@@ -145,7 +144,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
                                     </FormLabel>
 
                                     <Input
-                                        defaultValue={chatbot.name}
+                                        defaultValue={chatbot.name || ''}
                                         onChange={field.onChange}
                                         id="name"
                                     />
@@ -165,7 +164,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
                                         Welcome Message
                                     </FormLabel >
                                     <Input
-                                        defaultValue={chatbot.welcomeMessage}
+                                        defaultValue={chatbot.welcomeMessage || ''}
                                         onChange={field.onChange}
                                         id="welcomeMessage"
                                     />
@@ -185,7 +184,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
                                         Prompt
                                     </FormLabel>
                                     <Textarea
-                                        defaultValue={chatbot.prompt}
+                                        defaultValue={chatbot.prompt || ''}
                                         onChange={field.onChange}
                                         id="prompt"
                                     />
@@ -263,7 +262,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
                                         OpenAI Key
                                     </FormLabel>
                                     <Input
-                                        defaultValue={chatbot.openaiKey}
+                                        defaultValue={chatbot.openaiKey || ''}
                                         onChange={field.onChange}
                                         id="openAIKey"
                                         type="password"
@@ -284,7 +283,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, .
                                         Chatbot Error Message
                                     </FormLabel>
                                     <Textarea
-                                        defaultValue={chatbot.chatbotErrorMessage}
+                                        defaultValue={chatbot.chatbotErrorMessage || ''}
                                         onChange={field.onChange}
                                         id="chatbotErrorMessage"
                                     />
