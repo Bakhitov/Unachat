@@ -3,7 +3,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
 
-import { db } from "@/lib/db"
+import { db } from './db';
 import { sendWelcomeEmail } from "./emails/send-welcome";
 
 export const authOptions: NextAuthOptions = {
@@ -15,11 +15,17 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
+  debug: process.env.NODE_ENV === "development",
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
       allowDangerousEmailAccountLinking: true,
+      authorization: {
+        params: {
+          redirect_uri: `${process.env.NEXTAUTH_URL}/api/auth/callback/github`,
+        },
+      },
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -70,4 +76,3 @@ export const authOptions: NextAuthOptions = {
     }
   },
 };
-

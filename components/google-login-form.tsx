@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation"
 import LoadingDots from "@/components/loading-dots";
-import { Icons } from "./icons";
+import { Icons } from "@/components/icons";
 
 export default function GoogleLoginForm() {
   const [loading, setLoading] = useState(false);
@@ -15,14 +15,26 @@ export default function GoogleLoginForm() {
       onSubmit={async (e) => {
         e.preventDefault();
         setLoading(true);
-        await signIn("google", {
-          redirect: false,
-          callbackUrl: searchParams?.get("from") || "/welcome",
-        })
+        try {
+          const result = await signIn("google", {
+            redirect: false,
+            callbackUrl: searchParams?.get("from") || "/welcome",
+          });
+          
+          // Добавляем логирование для отладки
+          console.log("Google Sign In Result:", result);
+          
+          if (result?.error) {
+            console.error("Google Sign In Error:", result.error);
+          }
+        } catch (error) {
+          console.error("Google Sign In Exception:", error);
+        }
       }}
       className="flex flex-col space-y-4 px-4 sm:px-16"
     >
       <button
+        type="submit"
         disabled={loading}
         className={`${loading
           ? "cursor-not-allowed border-gray-200 bg-gray-100"

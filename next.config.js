@@ -4,7 +4,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['gwetfkan2dovfoiz.public.blob.vercel-storage.com'],
+    domains: ['gwetfkan2dovfoiz.public.blob.vercel-storage.com', 'lh3.googleusercontent.com'],
   },
   swcMinify: true,
   async headers() {
@@ -25,7 +25,7 @@ const nextConfig = {
     disableClientWebpackPlugin: true,
   },
   serverRuntimeConfig: {
-    maxDuration: 60 // Устанавливаем максимальное время выполнения в 60 секунд
+    maxDuration: 60
   }
 };
 
