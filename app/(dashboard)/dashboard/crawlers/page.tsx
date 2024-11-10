@@ -14,8 +14,8 @@ import { siteConfig } from "@/config/site"
 
 
 export const metadata = {
-  title: `${siteConfig.name} - Краулеры`,
-  description: "Управляйте вашими кролерами и их конфигурацией.",
+  title: `${siteConfig.name} - Парсеры`,
+  description: "Управляйте вашими парсерами и их конфигурацией.",
 }
 
 export default async function CrawlersPage() {
@@ -33,12 +33,12 @@ export default async function CrawlersPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Краулеры" text="Управляйте вашими кролерами и их конфигурацией.">
+      <DashboardHeader heading="Парсерами" text="Управляйте вашими парсерами и их конфигурацией.">
         <CrawlerCreateButton />
       </DashboardHeader>
       <div className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
         <p className="font-bold text-md">Предупреждение</p>
-        <p className="text-sm">Наши краулеры не поддерживают сайты, созданные с использованием javascript во время выполнения. Если ваш сайт не является SSR или статическим, мы не сможем получить контент.</p>
+        <p className="text-sm">Наши парсеры не поддерживают сайты, созданные с использованием javascript во время выполнения. Если ваш сайт не является SSR или статическим, мы не сможем получить контент.</p>
         <p className="text-sm">Мы рекомендуем использовать <a className="underline" href="https://github.com/BuilderIO/gpt-crawler">gpt-crawler</a> для локального кролирования вашего сайта и затем загрузить ваш файл в {siteConfig.name}.</p>
       </div>
       <div>
@@ -51,9 +51,9 @@ export default async function CrawlersPage() {
         ) : (
           <EmptyPlaceholder>
             <EmptyPlaceholder.Icon name="post" />
-            <EmptyPlaceholder.Title>Нет краулеров</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Title>Нет парсеров</EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
-              У вас нет краулеров. Начните импортировать контент.
+              У вас нет парсеров. Начните импортировать контент.
             </EmptyPlaceholder.Description>
             <CrawlerCreateButton variant="outline" />
           </EmptyPlaceholder>

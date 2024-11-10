@@ -20,7 +20,7 @@ export const dashboardConfig: DashboardConfig = {
             icon: "bot",
         },
         {
-            title: "Краулеры",
+            title: "Парсеры",
             href: "/dashboard/crawlers",
             icon: "post",
         },

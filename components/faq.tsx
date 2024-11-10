@@ -30,7 +30,7 @@ export function FAQ() {
           Как чатбот адаптируется к сайту?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          Мы используем собственные краулеры, которые мы создали для извлечения контента, который затем используется для обучения чатбота.
+          Мы используем собственные парсеры, которые мы создали для извлечения контента, который затем используется для обучения чатбота.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">

@@ -137,7 +137,7 @@ export function BillingForm({
                                                     - {plan.maxChatbots} Чатботов
                                                 </li>
                                                 <li className="flex items-center">
-                                                    - {plan.maxCrawlers} Краулеры
+                                                    - {plan.maxCrawlers} Парсеров
                                                 </li>
                                                 <li className="flex items-center">
                                                     - {plan.maxFiles} Файлы
@@ -210,7 +210,7 @@ export function BillingForm({
                                                 - {plan.maxChatbots} Чатботов
                                             </li>
                                             <li className="flex items-center">
-                                                - {plan.maxCrawlers} Краулеры
+                                                - {plan.maxCrawlers} Парсеры
                                             </li>
                                             <li className="flex items-center">
                                                 - {plan.maxFiles} Файлы
@@ -286,7 +286,7 @@ export function BillingForm({
                                         - X Чатботов
                                     </li>
                                     <li className="flex items-center">
-                                        - X Краулеры
+                                        - X Парсеров
                                     </li>
                                     <li className="flex items-center">
                                         - X Файлов

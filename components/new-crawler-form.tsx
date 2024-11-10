@@ -57,7 +57,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
         if (!response?.ok) {
             if (response.status === 402) {
                 return toast({
-                    title: "Предел краулеров достигнут.",
+                    title: "Предел парсоеров достигнут.",
                     description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
@@ -65,13 +65,13 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
 
             return toast({
                 title: "Что-то пошло не так.",
-                description: "Ваш краулер не был сохранен. Пожалуйста, попробуйте снова.",
+                description: "Ваш парсер не был сохранен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Ваш краулер был успешно сохранен.",
+            description: "Ваш парсер был успешно сохранен.",
         })
         const json = await response.json()
         router.push(`/dashboard/crawlers/${json.id}/crawl`)
@@ -86,7 +86,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Создать новый краулер</CardTitle>
+                        <CardTitle>Создать новый парсер</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField

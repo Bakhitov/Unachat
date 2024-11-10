@@ -43,7 +43,7 @@ export function CrawlerCreateButton({
             ) : (
                 <Icons.add className="mr-2 h-4 w-4" />
             )}
-            Новый краулер
+            Новый парсер
         </button>
     )
 }

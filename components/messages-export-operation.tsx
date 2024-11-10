@@ -43,14 +43,14 @@ export function MessagesExportOperations({ messagesExport }: MessagesExportOpera
 
         if (!response?.ok) {
             toast({
-                title: "Something went wrong.",
-                description: "Your export was not deleted. Please try again.",
+                title: "Ошибка при удалении экспорта.",
+                description: "Экспорт не был удален. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         } else {
             toast({
-                title: "Export deleted.",
-                description: "Your export was successfully deleted.",
+                title: "Экспорт удален.",
+                description: "Экспорт был успешно удален.",
                 variant: "default",
             })
         }
@@ -64,12 +64,12 @@ export function MessagesExportOperations({ messagesExport }: MessagesExportOpera
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-muted">
                     <Icons.ellipsis className="h-4 w-4" />
-                    <span className="sr-only">Download</span>
+                    <span className="sr-only">Скачать</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                     <DropdownMenuItem>
                         <Link href={messagesExport?.blobDownloadUrl as Url} className="flex w-full">
-                            Download
+                            Скачать
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -77,7 +77,7 @@ export function MessagesExportOperations({ messagesExport }: MessagesExportOpera
                         className="flex cursor-pointer items-center text-destructive focus:text-destructive"
                         onSelect={() => setShowDeleteAlert(true)}
                     >
-                        Delete
+                        Удалить
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -85,14 +85,14 @@ export function MessagesExportOperations({ messagesExport }: MessagesExportOpera
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle>
-                            Are you sure you want to delete this export?
+                            Вы уверены, что хотите удалить экспорт?
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            This action cannot be undone.
+                            Это действие не может быть отменено.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>Отмена</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={async (event: { preventDefault: () => void }) => {
                                 event.preventDefault()
@@ -111,7 +111,7 @@ export function MessagesExportOperations({ messagesExport }: MessagesExportOpera
                             ) : (
                                 <Icons.trash className="mr-2 h-4 w-4" />
                             )}
-                            <span>Delete</span>
+                            <span>Удалить</span>
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

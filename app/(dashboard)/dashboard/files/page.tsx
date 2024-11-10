@@ -81,7 +81,7 @@ export default async function FilePage() {
                 }
                 <div className="my-4" />
                 <div className="mb-4 flex items-center justify-between px-2">
-                    <Label className="text-lg">Файлы краулеров</Label>
+                    <Label className="text-lg">Файлы парсеров</Label>
                     <CrawlerCreateButton variant={"outline"} />
                 </div>
                 {filesWithCrawler.length ?

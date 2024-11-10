@@ -6,8 +6,8 @@ export default function CrawlersSettingsLoading() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Краулеры"
-                text="Управляйте вашими кролерами и их конфигурацией."
+                heading="Парсеры"
+                text="Управляйте вашими парсерами и их конфигурацией."
             />
             <div className="grid gap-10">
                 <CardSkeleton />

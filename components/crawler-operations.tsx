@@ -32,8 +32,8 @@ async function deleteCrawler(crawlerId: string) {
 
     if (!response?.ok) {
         toast({
-            title: "Something went wrong.",
-            description: "Your crawler was not deleted. Please try again.",
+            title: "Что-то пошло не так.",
+            description: "Ваш парсер не был удален. Пожалуйста, попробуйте снова.",
             variant: "destructive",
         })
     }
@@ -55,17 +55,17 @@ export function CrawlerOperations({ crawler }: CrawlerOperationsProps) {
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-muted">
                     <Icons.ellipsis className="h-4 w-4" />
-                    <span className="sr-only">Open</span>
+                    <span className="sr-only">Открыть</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                     <DropdownMenuItem>
                         <Link href={`/dashboard/crawlers/${crawler.id}`} className="flex w-full">
-                            Edit
+                            Редактировать
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href={`/dashboard/crawlers/${crawler.id}/crawl`} className="flex w-full">
-                            Crawl
+                            Запустить парсер
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -73,7 +73,7 @@ export function CrawlerOperations({ crawler }: CrawlerOperationsProps) {
                         className="flex cursor-pointer items-center text-destructive focus:text-destructive"
                         onSelect={() => setShowDeleteAlert(true)}
                     >
-                        Delete
+                        Удалить
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -81,14 +81,14 @@ export function CrawlerOperations({ crawler }: CrawlerOperationsProps) {
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle>
-                            Are you sure you want to delete this crawler, it will also delete all the files crawled by this crawler?
+                            Вы уверены, что хотите удалить этот парсер, он также удалит все файлы, которые были импортированы этим парсером?
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            This action cannot be undone.
+                            Это действие не может быть отменено.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>Отмена</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={async (event: { preventDefault: () => void }) => {
                                 event.preventDefault()
@@ -109,7 +109,7 @@ export function CrawlerOperations({ crawler }: CrawlerOperationsProps) {
                             ) : (
                                 <Icons.trash className="mr-2 h-4 w-4" />
                             )}
-                            <span>Delete</span>
+                            <span>Удалить</span>
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

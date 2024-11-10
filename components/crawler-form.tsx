@@ -65,13 +65,13 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
         if (!response?.ok) {
             return toast({
                 title: "Что-то пошло не так.",
-                description: "Ваш краулер не был обновлен. Пожалуйста, попробуйте снова.",
+                description: "Ваш парсер не был обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Ваш краулер был успешно обновлен.",
+            description: "Ваш парсер был успешно обновлен.",
         })
 
         router.refresh()
@@ -86,9 +86,9 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Настройки краулера</CardTitle>
+                        <CardTitle>Настройки парсера</CardTitle>
                         <CardDescription>
-                            Обновите конфигурацию вашего краулера.
+                            Обновите конфигурацию вашего парсера.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">

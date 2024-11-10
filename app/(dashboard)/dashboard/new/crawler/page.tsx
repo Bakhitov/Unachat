@@ -21,7 +21,7 @@ export default async function CrawlerCreatePage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Создать краулер" text="Создать краулер для начала импорта файлов.">
+            <DashboardHeader heading="Создать парсера" text="Создать парсера для начала импорта файлов.">
                 <Link
                     href="/dashboard/crawlers"
                     className={cn(
