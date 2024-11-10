@@ -6,8 +6,8 @@ export default function CreateExportLoading() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Export Messages"
-                text="Create an export of your chatbot messages."
+                heading="Экспорт сообщений"
+                text="Создать экспорт сообщений вашего чатбота."
             />
             <div className="grid gap-10">
                 <CardSkeleton />

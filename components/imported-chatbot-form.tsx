@@ -72,21 +72,21 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
 
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been updated.",
+            description: "Ваш чатбот был обновлен.",
         })
 
         router.refresh()
@@ -101,9 +101,9 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Chatbot settings</CardTitle>
+                        <CardTitle>Настройки чатбота</CardTitle>
                         <CardDescription>
-                            Update your chatbot configuration.
+                            Обновите конфигурацию вашего чатбота.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -113,7 +113,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="name">
-                                        Display Name
+                                        Отображаемое имя
                                     </FormLabel>
 
                                     <Input
@@ -122,7 +122,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                                         id="name"
                                     />
                                     <FormDescription>
-                                        The name that will be displayed in the dashboard
+                                        Отображаемое имя, которое будет отображаться в панели управления
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -143,7 +143,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                                         id="openAIAssistantId"
                                     />
                                     <FormDescription>
-                                        The OpenAI Assistant ID that already exists in your OpenAI account.
+                                        ID помощника OpenAI, который уже существует в вашей учетной записи OpenAI.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -155,7 +155,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="openAIKey">
-                                        OpenAI Key
+                                        API ключ OpenAI
                                     </FormLabel>
                                     <Input
                                         defaultValue={chatbot.openaiKey}
@@ -164,7 +164,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                                         type="password"
                                     />
                                     <FormDescription>
-                                        The API key that will be used to generate responses
+                                        API ключ, который будет использоваться для генерации ответов
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -176,7 +176,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="welcomeMessage">
-                                        Welcome Message
+                                        Приветственное сообщение
                                     </FormLabel >
                                     <Input
                                         defaultValue={chatbot.welcomeMessage}
@@ -184,7 +184,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                                         id="welcomeMessage"
                                     />
                                     <FormDescription>
-                                        The first message that will be sent to the user when they start a conversation with your chatbot.
+                                        Первое сообщение, которое будет отправлено пользователю при начале диалога с вашим чатботом.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -196,7 +196,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="chatbotErrorMessage">
-                                        Chatbot Error Message
+                                        Сообщение об ошибке чатбота
                                     </FormLabel>
                                     <Textarea
                                         defaultValue={chatbot.chatbotErrorMessage}
@@ -204,7 +204,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                                         id="chatbotErrorMessage"
                                     />
                                     <FormDescription>
-                                        The message that will be displayed when the chatbot encounters an error and can&apos;t reply to a user.
+                                        Сообщение, которое будет отображаться, когда чатбот встречает ошибку и не может ответить пользователю.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -216,12 +216,12 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                             render={({ field }) => (
                                 <FormItem className="flex flex-col items-left justify-between">
                                     <FormLabel >
-                                        Right to Left Language
+                                        Язык справа налево
                                     </FormLabel>
                                     <FormDescription>
-                                        If your chatbot default language is right to left, enable this option. This will change the chatbot layout to support right to left languages.
-                                        <br/>
-                                        Example of right to left languages: Arabic, Hebrew, Persian, Urdu, etc.
+                                        Если язык по умолчанию вашего чатбота справа налево, включите эту опцию. Это изменит макет чатбота, чтобы поддерживать языки справа налево.
+                                        <br />
+                                        Примеры языков справа налево: арабский, иврит, персидский, урду и др.
                                     </FormDescription>
                                     <FormControl>
                                         <Switch
@@ -242,7 +242,7 @@ export function ImportedChatbotForm({ chatbot, className, ...props }: ChatbotFor
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

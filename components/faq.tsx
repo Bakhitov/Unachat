@@ -9,60 +9,60 @@ export function FAQ() {
     <Accordion className="w-full mt-4" type="multiple">
       <AccordionItem value="item-0">
         <AccordionTrigger className="hover:underline-none">
-          What is OpenAssistantGPT?
+          Что такое Onaychat?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          OpenAssistantGPT is an advanced chatbot solution designed to answer questions, assist with navigating our website, and provide information to users in real-time.
+          Onaychat - это решение для создания чатботов, которые могут отвечать на вопросы, помогать с навигацией по сайту и предоставлять информацию в реальном времени.
         </AccordionContent>
       </AccordionItem>
 
       <AccordionItem value="item-1">
         <AccordionTrigger className="hover:underline-none">
-          What are OpenAI assistants?
+          Что такое OpenAI assistants?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          The Assistants is designed to help developers build powerful AI assistants capable of performing a variety of tasks.
-          Find more information <a href="https://platform.openai.com/docs/assistants/how-it-works" className="underline">here</a>.
+          Assistants - это инструмент, который помогает разработчикам создавать мощные AI-ассистенты, способные выполнять различные задачи.
+          Найти более подробную информацию <a href="https://platform.openai.com/docs/assistants/how-it-works" className="underline">здесь</a>.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger className="hover:underline-none">
-          How does the chatbot addapt to the website?
+          Как чатбот адаптируется к сайту?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          We use custom crawlers that we created to extract the content then this content is used to train the chatbot.
+          Мы используем собственные краулеры, которые мы создали для извлечения контента, который затем используется для обучения чатбота.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger className="hover:underline-none">
-          Is OpenAssistantGPT always available?
+          Всегда ли доступен чатбот?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          Yes, OpenAssistantGPT is available 24/7 to assist with any questions you might have at any time.
+          Да, чатбот доступен 24/7, чтобы помочь с любыми вопросами в любое время.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
         <AccordionTrigger className="hover:underline-none text-left">
-          What kind of questions can I ask OpenAssistantGPT?
+          Какие вопросы можно задавать чатботу?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          You can ask OpenAssistantGPT about website navigation, services offered, troubleshooting, and more. It&apos;s here to ensure you find the information you need.
+          Вы можете задавать чатботу вопросы о навигации по сайту, услугах, которые мы предоставляем, а также о технических проблемах.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem className="border-b-0" value="item-5">
         <AccordionTrigger className="hover:underline-none text-left">
-          Does OpenAssistantGPT replace human customer service?
+          Заменяет ли чатбот человеческий сервис?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          OpenAssistantGPT complements our human customer service by handling straightforward questions and issues, allowing our human team to focus on more complex inquiries.
+          Чатбот дополняет наш человеческий сервис, обрабатывая простые вопросы и проблемы, позволяя нашему человеческому персоналу сосредоточиться на более сложных запросах.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-6">
         <AccordionTrigger className="hover:underline-none">
-          Which model do you support with OpenAssistantGPT?
+          Какие модели поддерживаются чатботом?
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          We support the GPT-3, GPT-4 and GPT-4o model from OpenAI.
+          Мы поддерживаем модели GPT-3, GPT-4 и GPT-4o от OpenAI.
         </AccordionContent>
       </AccordionItem>
     </Accordion>

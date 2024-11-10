@@ -44,19 +44,19 @@ export function Inquiries({
                 <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
                     <Tabs defaultValue="all">
                         <div className="flex items-center px-4 py-2">
-                            <h1 className="text-xl font-bold">Inbox</h1>
+                            <h1 className="text-xl font-bold">Входящие запросы</h1>
                             <TabsList className="ml-auto">
                                 <TabsTrigger
                                     value="all"
                                     className="text-zinc-600"
                                 >
-                                    New Inquiries
+                                    Новые
                                 </TabsTrigger>
                                 <TabsTrigger
                                     value="deleted"
                                     className="text-zinc-600"
                                 >
-                                    Deleted Inquiries
+                                    Удаленные
                                 </TabsTrigger>
                             </TabsList>
                         </div>

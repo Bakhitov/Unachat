@@ -6,8 +6,8 @@ export default function CrawlersSettingsLoading() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Crawlers"
-                text="Manage your crawlers and crawling configuration."
+                heading="Краулеры"
+                text="Управляйте вашими кролерами и их конфигурацией."
             />
             <div className="grid gap-10">
                 <CardSkeleton />

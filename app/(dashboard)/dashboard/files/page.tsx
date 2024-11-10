@@ -54,11 +54,11 @@ export default async function FilePage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Files" text="List of all of your imported and crawled files.">
+            <DashboardHeader heading="Файлы" text="Список всех импортированных и кроленных файлов.">
             </DashboardHeader>
             <div className="flex flex-col">
                 <div className="mb-4 flex items-center justify-between px-2">
-                    <Label className="text-lg">Uploaded files</Label>
+                    <Label className="text-lg">Загруженные файлы</Label>
                     <FileUploadButton variant={"outline"} />
                 </div>
                 {uploadedFiles.length ?
@@ -71,9 +71,9 @@ export default async function FilePage() {
                     : <div className="grid gap-10">
                         <EmptyPlaceholder>
                             <EmptyPlaceholder.Icon name="folder" />
-                            <EmptyPlaceholder.Title>Import a file now</EmptyPlaceholder.Title>
+                            <EmptyPlaceholder.Title>Импортируйте файл</EmptyPlaceholder.Title>
                             <EmptyPlaceholder.Description>
-                                You don&apos;t have any files yet. Import a file.
+                                У вас нет файлов. Импортируйте файл.
                             </EmptyPlaceholder.Description>
                             <FileUploadButton variant={"outline"} />
                         </EmptyPlaceholder>
@@ -81,7 +81,7 @@ export default async function FilePage() {
                 }
                 <div className="my-4" />
                 <div className="mb-4 flex items-center justify-between px-2">
-                    <Label className="text-lg">Crawlers&apos; files</Label>
+                    <Label className="text-lg">Файлы краулеров</Label>
                     <CrawlerCreateButton variant={"outline"} />
                 </div>
                 {filesWithCrawler.length ?
@@ -96,9 +96,9 @@ export default async function FilePage() {
                     <div className="grid gap-10">
                         <EmptyPlaceholder>
                             <EmptyPlaceholder.Icon name="laptop" />
-                            <EmptyPlaceholder.Title>Start crawling now to import files</EmptyPlaceholder.Title>
+                            <EmptyPlaceholder.Title>Начните кролирование, чтобы импортировать файлы</EmptyPlaceholder.Title>
                             <EmptyPlaceholder.Description>
-                                You don&apos;t have any files yet. Start crawling.
+                                У вас нет файлов. Начните кролирование.
                             </EmptyPlaceholder.Description>
                             <CrawlerCreateButton variant={"outline"} />
                         </EmptyPlaceholder>

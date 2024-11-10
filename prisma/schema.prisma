@@ -59,11 +59,11 @@ model Chatbot {
   model               ChatbotModel? @relation(fields: [modelId], references: [id])
   prompt              String?
   welcomeMessage      String
-  chatbotErrorMessage String        @default("Oops! An error has occurred. If the issue persists, feel free to reach out to our support team for assistance. We're here to help!")
+  chatbotErrorMessage String        @default("Ой! Произошла ошибка. Если проблема не решится, пожалуйста, обратитесь в нашу службу поддержки для помощи. Мы здесь, чтобы помочь!")
   isImported          Boolean       @default(false)
 
-  chatTitle              String  @default("Chat with us")
-  chatMessagePlaceHolder String  @default("Type a message...")
+  chatTitle              String  @default("Чат с нами")
+  chatMessagePlaceHolder String  @default("Напишите сообщение...")
   rightToLeftLanguage    Boolean @default(false)
 
   bubbleColor                 String  @default("#FFFFFF")
@@ -79,13 +79,13 @@ model Chatbot {
   chatInputStyle String @default("default")
 
   inquiryEnabled                  Boolean @default(false)
-  inquiryLinkText                 String  @default("Contact our support team")
-  inquiryTitle                    String  @default("Contact our support team")
-  inquirySubtitle                 String  @default("Our team is here to help you with any questions you may have. Please provide us with your email and a brief message so we can assist you.")
+  inquiryLinkText                 String  @default("Свяжитесь с нашей службой поддержки")
+  inquiryTitle                    String  @default("Свяжитесь с нашей службой поддержки")
+  inquirySubtitle                 String  @default("Наша команда здесь, чтобы помочь вам с любыми вопросами, которые у вас могут быть. Пожалуйста, предоставьте нам ваш email и краткое сообщение, чтобы мы могли вам помочь.")
   inquiryEmailLabel               String  @default("Email")
-  inquiryMessageLabel             String  @default("Message")
-  inquirySendButtonText           String  @default("Send message")
-  inquiryAutomaticReplyText       String  @default("Your inquiry has been sent. Our team will get back to you shortly.")
+  inquiryMessageLabel             String  @default("Сообщение")
+  inquirySendButtonText           String  @default("Отправить сообщение")
+  inquiryAutomaticReplyText       String  @default("Ваше сообщение отправлено. Наша команда скоро ответит вам.")
   inquiryDisplayLinkAfterXMessage Int     @default(1)
 
   chatHistoryEnabled Boolean @default(false)

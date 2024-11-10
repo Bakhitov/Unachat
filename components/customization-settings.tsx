@@ -143,27 +143,27 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             } else if (response.status === 402) {
                 return toast({
-                    title: "Chatbot not customizable.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Чатбот не настраиваемый.",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been updated.",
+            description: "Ваш чатбот обновлен.",
         })
     }
 
@@ -172,7 +172,7 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
                     <div>
-                        <h3 className="mb-4 text-lg font-medium">Chatbot Customizations</h3>
+                        <h3 className="mb-4 text-lg font-medium">Настройки чатбота</h3>
                         <div className="space-y-4">
                             <FormField
                                 control={form.control}
@@ -181,10 +181,10 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-0.5">
                                             <FormLabel className="text-base">
-                                                Chatbox Title
+                                                Заголовок чатбота
                                             </FormLabel>
                                             <FormDescription>
-                                                Change the chatbox title.
+                                                Измените заголовок чатбота.
                                             </FormDescription>
                                         </div>
                                         <FormControl>
@@ -205,10 +205,10 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-0.5">
                                             <FormLabel className="text-base">
-                                                Chatbox Input Message Placeholder Text
+                                                Текст заполнителя ввода сообщения
                                             </FormLabel>
                                             <FormDescription>
-                                                Update the placeholder text in the chatbox input.
+                                                Обновите текст заполнителя ввода сообщения.
                                             </FormDescription>
                                         </div>
                                         <FormControl>
@@ -227,15 +227,15 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-4">
-                                            <h1>Customize Your Chatbot Widget</h1>
+                                            <h1>Настройка виджета чатбота</h1>
                                             <div className="flex">
                                                 <div className="flex flex-col w-full justify space-y-4">
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            Chatbot Background Bubble Color
+                                                            Цвет чатбота
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Select the color you want to use for your chatbot bubble
+                                                            Выберите цвет, который вы хотите использовать для чатбота.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <GradientPicker background={bubbleColor} setBackground={setBubbleColor} />
@@ -244,10 +244,10 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
 
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            Chatbot Logo Color
+                                                            Цвет логотипа чатбота
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Select the color you want to use for your chatbot logo color
+                                                            Выберите цвет, который вы хотите использовать для логотипа чатбота.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <GradientPicker withGradient={false} background={bubbleLogoColor} setBackground={setBubbleLogoColor} />
@@ -269,15 +269,15 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-4">
-                                            <h1>Customize Your Chatbox Header</h1>
+                                            <h1>Настройка заголовка чатбота</h1>
                                             <div className="flex">
                                                 <div className="flex flex-col w-full justify space-y-4">
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            Chatbot Header Background Color
+                                                            Цвет фона заголовка чатбота
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Select the color you want to use for your chatbox header background
+                                                            Выберите цвет, который вы хотите использовать для фона заголовка чатбота.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <GradientPicker background={chatHeaderBackgroundColor} setBackground={setChatHeaderBackgroundColor} />
@@ -286,10 +286,10 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
 
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            Chatbot Header Text Color
+                                                            Цвет текста заголовка чатбота
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Select the color you want to use for your chatbot header text color
+                                                            Выберите цвет, который вы хотите использовать для текста заголовка чатбота.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <GradientPicker withGradient={false} background={chatHeaderTextColor} setBackground={setChatHeaderTextColor} />
@@ -298,7 +298,7 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                                 </div>
                                                 <div className="flex w-full items-center text-center justify-center">
                                                     <div style={{ background: chatHeaderBackgroundColor }} className="flex rounded-t-lg shadow justify-between items-center p-4">
-                                                        <h3 style={{ color: chatHeaderTextColor }} className="text-xl font-semibold">Chat with our AI</h3>
+                                                        <h3 style={{ color: chatHeaderTextColor }} className="text-xl font-semibold">Чат с нашим AI</h3>
                                                         <div>
                                                             <Button variant="ghost">
                                                                 <Icons.close style={{ color: chatHeaderTextColor }} className="h-5 w-5 text-gray-500" />
@@ -316,15 +316,15 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-4">
-                                            <h1>Customize Your User Reply</h1>
+                                            <h1>Настройка ответа пользователя</h1>
                                             <div className="flex">
                                                 <div className="flex flex-col w-full justify space-y-4">
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            User Background Message Color
+                                                            Цвет фона сообщения пользователя
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Choose the color for the background of your user&apos;s messages.
+                                                            Выберите цвет, который вы хотите использовать для фона сообщения пользователя.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <GradientPicker withGradient={false} background={userBubbleColor} setBackground={setUserBubbleColor} />
@@ -333,10 +333,10 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
 
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            User Message Text Color
+                                                            Цвет текста сообщения пользователя
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Choose the color for the text in your user&apos;s messages.
+                                                            Выберите цвет, который вы хотите использовать для текста сообщения пользователя.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <GradientPicker withGradient={false} background={userBubbleMessageColor} setBackground={setUserBubbleMessageColor} />
@@ -347,7 +347,7 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                                 <div className="flex w-full items-center text-center justify-center">
                                                     <div key="0" className="flex w-5/6 items-end gap-2">
                                                         <div className="rounded-lg p-2" style={{ background: userBubbleColor }}>
-                                                            <p className="text-md" style={{ color: userBubbleMessageColor }}>I need help with my customization what color should I choose?</p>
+                                                            <p className="text-md" style={{ color: userBubbleMessageColor }}> Я нуждаюсь в помощи с настройкой. Какой цвет выбрать?</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -361,16 +361,16 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-4">
-                                            <h1>Images</h1>
+                                            <h1>Изображения</h1>
                                             <div className="flex">
                                                 <div className="flex flex-col w-full justify space-y-4">
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            Choose chatbot image
+                                                            Выберите изображение чатбота
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            Choose the image you want to use for your chatbot. The image used will be displayed as the chatbot profile picture.
-                                                            Image size must be 32x32 pixels.
+                                                            Выберите изображение, которое вы хотите использовать для чатбота. Изображение будет отображаться как профильное изображение чатбота.
+                                                            Размер изображения должен быть 32x32 пикселя.
                                                         </FormDescription>
                                                         <FormControl>
                                                             <div className="space-y-2">
@@ -386,7 +386,7 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                                                 <div className="flex space-x-2 flex-row">
                                                                     <Checkbox onCheckedChange={() => {
                                                                         setUseDefaultImage(!useDefaultImage)
-                                                                    }} checked={useDefaultImage} ></Checkbox> <span className="text-sm text-muted-foreground">Use default chatbot image</span>
+                                                                    }} checked={useDefaultImage} ></Checkbox> <span className="text-sm text-muted-foreground">Использовать изображение по умолчанию</span>
                                                                 </div>
                                                             </div>
                                                         </FormControl>
@@ -406,21 +406,21 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col items-left justify-between rounded-lg border p-4">
                                         <div className="space-y-4">
-                                            <h1>Styles</h1>
+                                            <h1>Стили</h1>
                                             <div className="flex">
                                                 <div className="flex flex-col w-full justify space-y-4">
                                                     <div className="space-y-0.5">
                                                         <FormLabel className="text-base">
-                                                            Change the chat input style
+                                                            Измените стиль ввода сообщения
                                                         </FormLabel>
                                                         <FormDescription>
-                                                            You have two choice default style or full width style.
+                                                            У вас есть два варианта: стандартный стиль или стиль полной ширины.
                                                             <br />
-                                                            Default style is the default style of the chat input the width is half the screen of the user on desktop mode.
+                                                            Стандартный стиль - это стандартный стиль ввода сообщения, ширина которого составляет половину экрана пользователя в режиме работы на компьютере.
                                                             <br />
-                                                            Full width style is the full width of the screen of the user on desktop mode.
+                                                            Стиль полной ширины - это полная ширина экрана пользователя в режиме работы на компьютере.
                                                             <br />
-                                                            Both have the same behavior on mobile mode or widget mode it will have effect with the window integrations.
+                                                            Оба стиля имеют одинаковое поведение на мобильном режиме или режиме виджета, они будут влиять на интеграции с окнами.
                                                         </FormDescription>
 
                                                     </div>
@@ -431,11 +431,11 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                                         >
                                                             <div className="flex items-center space-x-2">
                                                                 <RadioGroupItem value="default" id="default" />
-                                                                <Label htmlFor="default">Default Style</Label>
+                                                                <Label htmlFor="default">Стандартный стиль</Label>
                                                             </div>
                                                             <div className="flex items-center space-x-2">
                                                                 <RadioGroupItem value="full-width" id="full-width" />
-                                                                <Label htmlFor="full-width">Full Width</Label>
+                                                                <Label htmlFor="full-width">Полная ширина</Label>
                                                             </div>
                                                         </RadioGroup>
                                                     </FormControl>
@@ -452,10 +452,10 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                                         <div className="space-y-0.5">
                                             <FormLabel className="text-base">
-                                                Chat History
+                                                История чата
                                             </FormLabel>
                                             <FormDescription>
-                                                Enable or disable chat history. Enabling chat history will allow users to view previous chat with your chatbot.
+                                                Включите или отключите историю чата. Включение истории чата позволит пользователям просматривать предыдущие чаты с вашим чатботом.
                                             </FormDescription>
                                         </div>
                                         <FormControl>
@@ -478,7 +478,7 @@ export function CustomizationSettings({ chatbot }: ChatbotOperationsProps) {
                         {isSaving && (
                             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                         )}
-                        <span>Save</span>
+                        <span>Сохранить</span>
                     </button>
                 </form>
             </Form>

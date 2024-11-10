@@ -26,7 +26,6 @@ async function getChatbotForUser(chatbotId: Chatbot["id"], userId: User["id"]) {
 }
 
 export default async function UserInquiryPage({ params }: ChatbotSettingsProps) {
-
     const user = await getCurrentUser()
 
     if (!user) {
@@ -71,13 +70,12 @@ export default async function UserInquiryPage({ params }: ChatbotSettingsProps) 
                 ...inquiry,
                 messages
             }
-        }
-        )
+        })
     )
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="User Inquiries" text="All the users that contacted you using your chatbot">
+            <DashboardHeader heading="Запросы пользователей" text="Все запросы пользователей, которые связались с вами с помощью вашего чатбота">
                 <Link
                     href={`/dashboard/chatbots`}
                     className={cn(
@@ -87,11 +85,14 @@ export default async function UserInquiryPage({ params }: ChatbotSettingsProps) 
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>
-            <Inquiries inquiries={inquiriesWithMessages} />
-        </DashboardShell >
+            <Inquiries 
+                inquiries={inquiriesWithMessages} 
+                defaultLayout={[265, 440, 655]}
+            />
+        </DashboardShell>
     )
 }

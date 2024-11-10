@@ -128,13 +128,13 @@ export async function POST(
                                 }
                             }
                         })
-                        console.log(`Message count: ${messageCount}`)
+                        console.log(`Каунтер сообщений: ${messageCount}`)
                         if (messageCount >= plan.maxMessagesPerMonth!) {
-                            console.log(`Reached message limit ${chatbot.userId}`)
+                            console.log(`Достигнут лимит сообщений ${chatbot.userId}`)
                             sendMessage({
                                 id: "end",
                                 role: 'assistant',
-                                content: [{ type: 'text', text: { value: "You have reached your monthly message limit. Upgrade your plan to continue using your chatbot." } }]
+                                content: [{ type: 'text', text: { value: "Вы достигли лимита сообщений в месяц. Обновите ваш план, чтобы продолжить использовать вашего чатбота." } }]
                             });
                             return;
                         }

@@ -99,21 +99,21 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been updated.",
+            description: "Ваш чатбот был успешно обновлен.",
         })
 
         router.refresh()
@@ -128,9 +128,9 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Chatbot settings</CardTitle>
+                        <CardTitle>Настройки чатбота</CardTitle>
                         <CardDescription>
-                            Update your chatbot configuration.
+                            Обновите конфигурацию вашего чатбота.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -140,7 +140,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="name">
-                                        Display Name
+                                        Отображаемое имя
                                     </FormLabel>
 
                                     <Input
@@ -149,7 +149,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                         id="name"
                                     />
                                     <FormDescription>
-                                        The name that will be displayed in the dashboard
+                                        Отображаемое имя, которое будет отображаться в панели управления
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -161,7 +161,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="welcomeMessage">
-                                        Welcome Message
+                                        Приветственное сообщение
                                     </FormLabel >
                                     <Input
                                         defaultValue={chatbot.welcomeMessage || ''}
@@ -169,7 +169,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                         id="welcomeMessage"
                                     />
                                     <FormDescription>
-                                        The first message that will be sent to the user when they start a conversation with your chatbot.
+                                        Первое сообщение, которое будет отправлено пользователю при начале диалога с вашим чатботом.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -189,8 +189,8 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                         id="prompt"
                                     />
                                     <FormDescription>
-                                        This is the prompt that will be sent to OpenAI, here&apos;s and example:
-                                        &quot;You are an assistant you help users that visit our website, keep it short, always refer to the documentation provided and never ask for more information.&quot;
+                                        Это prompt, который будет отправлен в OpenAI, вот пример:
+                                        &quot;Вы - помощник, который помогает пользователям, посещающим наш сайт, держите его коротким, всегда ссылаясь на предоставленную документацию и никогда не просите больше информации.&quot;
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -202,7 +202,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="files">
-                                        Choose your file for retrival
+                                        Выберите файл для извлечения
                                     </FormLabel>
                                     <Select
                                         isMulti
@@ -217,8 +217,8 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                     />
 
                                     <FormDescription>
-                                        The OpenAI model will use this file to search for specific content.
-                                        If you don&apos;t have a file yet, it is because you haven&apos;t published any file.
+                                        Модель OpenAI будет использовать этот файл для поиска конкретного контента.
+                                        Если у вас нет файла, это потому, что вы не опубликовали его.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -246,8 +246,8 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                         classNamePrefix="select"
                                     />
                                     <FormDescription>
-                                        The OpenAI model that will be used to generate responses.
-                                        <b> If you don&apos;t have the gpt-4 option and want to use it. You need to have an OpenAI account at least tier 1.</b>
+                                        Модель OpenAI, которая будет использоваться для генерации ответов.
+                                        <b> Если у вас нет опции gpt-4 и вы хотите ее использовать, вам нужно иметь учетную запись OpenAI по крайней мере на уровне 1.</b>
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -268,7 +268,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                         type="password"
                                     />
                                     <FormDescription>
-                                        The API key that will be used to generate responses
+                                        API ключ, который будет использоваться для генерации ответов
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -280,7 +280,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="chatbotErrorMessage">
-                                        Chatbot Error Message
+                                        Сообщение об ошибке чатбота
                                     </FormLabel>
                                     <Textarea
                                         defaultValue={chatbot.chatbotErrorMessage || ''}
@@ -288,7 +288,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                                         id="chatbotErrorMessage"
                                     />
                                     <FormDescription>
-                                        The message that will be displayed when the chatbot encounters an error and can&apos;t reply to a user.
+                                        Сообщение, которое будет отображаться, когда чатбот встречает ошибку и не может ответить пользователю.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -300,12 +300,12 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                             render={({ field }) => (
                                 <FormItem className="flex flex-col items-left justify-between">
                                     <FormLabel >
-                                        Right to Left Language
+                                        Язык справа налево
                                     </FormLabel>
                                     <FormDescription>
-                                        If your chatbot default language is right to left, enable this option. This will change the chatbot layout to support right to left languages.
+                                        Если язык по умолчанию вашего чатбота справа налево, включите эту опцию. Это изменит макет чатбота, чтобы поддерживать языки справа налево.
                                         <br/>
-                                        Example of right to left languages: Arabic, Hebrew, Persian, Urdu, etc.
+                                        Примеры языков справа налево: арабский, иврит, персидский, урду и др.
                                     </FormDescription>
                                     <FormControl>
                                         <Switch
@@ -326,7 +326,7 @@ export function ChatbotForm({ chatbot, currentFiles, models, files, className, u
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

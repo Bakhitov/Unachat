@@ -4,43 +4,43 @@ import { DashboardConfig } from "@/types"
 export const dashboardConfig: DashboardConfig = {
     mainNav: [
         {
-            title: "Support",
+            title: "Поддержка",
             href: "/dashboard/support",
         },
     ],
     sidebarNav: [
         {
-            title: "Dashboard",
+            title: "Дашборд",
             href: "/dashboard",
             icon: "dashboard",
         },
         {
-            title: "Chatbots",
+            title: "Чатботы",
             href: "/dashboard/chatbots",
             icon: "bot",
         },
         {
-            title: "Crawlers",
+            title: "Краулеры",
             href: "/dashboard/crawlers",
             icon: "post",
         },
         {
-            title: "Files",
+            title: "Файлы",
             href: "/dashboard/files",
             icon: "folder",
         },
         {
-            title: "Exports",
+            title: "Экспорты",
             href: "/dashboard/exports",
             icon: "download",
         },
         {
-            title: "Billing",
+            title: "Платежи",
             href: "/dashboard/billing",
             icon: "billing",
         },
         {
-            title: "Settings",
+            title: "Настройки",
             href: "/dashboard/settings",
             icon: "settings",
         }

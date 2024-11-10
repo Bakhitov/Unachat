@@ -51,8 +51,8 @@ export function BillingForm({
 
         if (!response?.ok) {
             return toast({
-                title: "Something went wrong.",
-                description: "Please refresh the page and try again.",
+                title: "Что-то пошло не так.",
+                description: "Пожалуйста, обновите страницу и попробуйте снова.",
                 variant: "destructive",
             })
         }
@@ -72,7 +72,7 @@ export function BillingForm({
 
         eventGA({
             action: 'purchase',
-            label: 'New subscription purchased',
+            label: 'Новая подписка приобретена',
             value: plan.price,
             currency: 'USD'
         });
@@ -87,10 +87,10 @@ export function BillingForm({
         <form className={cn(className)} {...props}>
             <Card>
                 <CardHeader>
-                    <CardTitle>Subscription Plan</CardTitle>
+                    <CardTitle>План подписки</CardTitle>
                     <CardDescription>
-                        You are currently on the <strong>{subscriptionPlan.name}</strong>{" "}
-                        plan.
+                        Вы сейчас на <strong>{subscriptionPlan.name}</strong>{" "}
+                        плане.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>{subscriptionPlan.description}</CardContent>
@@ -104,14 +104,14 @@ export function BillingForm({
                             {isLoading && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            Manage Subscription
+                            Управление подпиской
                         </button>
                     }
                     {subscriptionPlan.name !== "FREE" ? (
                         <p className="rounded-full text-xs font-medium">
                             {subscriptionPlan.isCanceled
-                                ? "Your plan will be canceled on "
-                                : "Your plan renews on "}
+                                ? "Ваш план будет отменен "
+                                : "Ваш план будет продлен "}
                             {formatDate(subscriptionPlan.stripeCurrentPeriodEnd)}.
                         </p>
                     ) : null}
@@ -124,62 +124,62 @@ export function BillingForm({
                             return (
                                 <div key={i} className="hover:shadow-sm relative flex flex-col p-2 bg-white rounded-lg  bg-zinc-850 justify-between border border-purple-500">
                                     <div className="px-3 py-1 text-sm text-white bg-gradient-to-r from-pink-500 to-purple-500 rounded-full inline-block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                        Popular
+                                        Популярный
                                     </div>
                                     <Card className="shadow-none border-0 p-0 m-0" key={i}>
                                         <CardHeader>
                                             <CardTitle>{plan.name}</CardTitle>
-                                            <CardDescription>${plan.price}/month</CardDescription>
+                                            <CardDescription>${plan.price}/в месяц</CardDescription>
                                         </CardHeader>
                                         <CardContent>
                                             <ul className="mt-4 space-y-2">
                                                 <li className="flex items-center">
-                                                    - {plan.maxChatbots} Chatbots
+                                                    - {plan.maxChatbots} Чатботов
                                                 </li>
                                                 <li className="flex items-center">
-                                                    - {plan.maxCrawlers} Crawlers
+                                                    - {plan.maxCrawlers} Краулеры
                                                 </li>
                                                 <li className="flex items-center">
-                                                    - {plan.maxFiles} Files
+                                                    - {plan.maxFiles} Файлы
                                                 </li>
                                                 {
                                                     plan.basicCustomization &&
                                                     <li className="flex items-center">
-                                                        - Customizations
+                                                        - Настройки
                                                     </li>
                                                 }
                                                 {
                                                     plan.unlimitedMessages ?
                                                         <li className="flex items-center">
-                                                            - Unlimited Messages
+                                                            - Без ограничений сообщений
                                                         </li>
                                                         :
                                                         <li className="flex items-center">
-                                                            - {plan.maxMessagesPerMonth} Messages / Month
+                                                            - {plan.maxMessagesPerMonth} Сообщений / Месяц
                                                         </li>
                                                 }
                                                 {
                                                     plan.userInquiries &&
                                                     <li className="flex items-center">
-                                                        - User Inquiry
+                                                        - Запросы пользователей
                                                     </li>
                                                 }
                                                 {
                                                     plan.brandingCustomization &&
                                                     <li className="flex items-center">
-                                                        - Remove &quot;Powered by {siteConfig.name}&quot;
+                                                        - Удалить &quot;Разработано на {siteConfig.name}&quot;
                                                     </li>
                                                 }
                                                 {
                                                     plan.chatFileAttachments &&
                                                     <li className="flex items-center">
-                                                        - Client File Attachments
+                                                        - Прикрепление файлов клиента
                                                     </li>
                                                 }
                                                 {
                                                     plan.premiumSupport &&
                                                     <li className="flex items-center">
-                                                        - Premium Support
+                                                        - Премиум поддержка
                                                     </li>
                                                 }
                                             </ul>
@@ -191,7 +191,7 @@ export function BillingForm({
                                                 {isLoading && (
                                                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                                                 )}
-                                                { plan.name === freePlan.name ? "Start 7 days free trial" : "Upgrade"}
+                                                { plan.name === freePlan.name ? "Начать 7 дней бесплатной пробной версии" : "Обновить"}
                                             </Button>
                                         </CardFooter>
                                     </Card>
@@ -202,57 +202,57 @@ export function BillingForm({
                                 <Card className="shadow-none border-0 p-0 m-0 flex flex-col flex-grow" key={i}>
                                     <CardHeader>
                                         <CardTitle>{plan.name}</CardTitle>
-                                        <CardDescription>${plan.price}/month</CardDescription>
+                                        <CardDescription>${plan.price}/в месяц</CardDescription>
                                     </CardHeader>
                                     <CardContent className="flex flex-col flex-grow">
                                         <ul className="mt-4 space-y-2">
                                             <li className="flex items-center">
-                                                - {plan.maxChatbots} Chatbots
+                                                - {plan.maxChatbots} Чатботов
                                             </li>
                                             <li className="flex items-center">
-                                                - {plan.maxCrawlers} Crawlers
+                                                - {plan.maxCrawlers} Краулеры
                                             </li>
                                             <li className="flex items-center">
-                                                - {plan.maxFiles} Files
+                                                - {plan.maxFiles} Файлы
                                             </li>
                                             {
                                                 plan.basicCustomization &&
                                                 <li className="flex items-center">
-                                                    - Customizations
+                                                    - Настройки
                                                 </li>
                                             }
                                             {
                                                 plan.unlimitedMessages ?
                                                     <li className="flex items-center">
-                                                        - Unlimited Messages
+                                                        - Без ограничений сообщений
                                                     </li>
                                                     :
                                                     <li className="flex items-center">
-                                                        - {plan.maxMessagesPerMonth} Messages / Month
+                                                        - {plan.maxMessagesPerMonth} Сообщений / Месяц
                                                     </li>
                                             }
                                             {
                                                 plan.userInquiries &&
                                                 <li className="flex items-center">
-                                                    - User Inquiry
+                                                    - Запросы пользователей
                                                 </li>
                                             }
                                             {
                                                 plan.brandingCustomization &&
                                                 <li className="flex items-center">
-                                                    - Remove &quot;Powered by {siteConfig.name}&quot;
+                                                    - Удалить &quot; Разработано на {siteConfig.name}&quot;
                                                 </li>
                                             }
                                             {
                                                 plan.chatFileAttachments &&
                                                 <li className="flex items-center">
-                                                    - Client File Attachments
+                                                    - Прикрепление файлов клиента
                                                 </li>
                                             }
                                             {
                                                 plan.premiumSupport &&
                                                 <li className="flex items-center">
-                                                    - Premium Support
+                                                    - Премиум поддержка
                                                 </li>
                                             }
                                         </ul>
@@ -265,7 +265,7 @@ export function BillingForm({
                                                 {isLoading && (
                                                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                                                 )}
-                                                { plan.name === freePlan.name ? "Start 7 days free trial" : "Upgrade"}
+                                                { plan.name === freePlan.name ? "Начать 7 дней бесплатной пробной версии" : "Обновить"}
                                             </Button>
                                         }
                                     </CardFooter>
@@ -278,24 +278,24 @@ export function BillingForm({
                         <Card key="enterprise" className="flex flex-col flex-grow">
                             <CardHeader>
                                 <CardTitle>Enterprise</CardTitle>
-                                <CardDescription>$X/month</CardDescription>
+                                <CardDescription>$X/в месяц</CardDescription>
                             </CardHeader>
                             <CardContent className="flex flex-col flex-grow">
                                 <ul className="mt-4 space-y-2">
                                     <li className="flex items-center">
-                                        - X Chatbots
+                                        - X Чатботов
                                     </li>
                                     <li className="flex items-center">
-                                        - X Crawlers
+                                        - X Краулеры
                                     </li>
                                     <li className="flex items-center">
-                                        -  X Files
+                                        - X Файлов
                                     </li>
                                     <li className="flex items-center">
-                                        - Unlimited Messages
+                                        - Без ограничений сообщений
                                     </li>
                                     <li className="flex items-center">
-                                        - All Feature from other plans
+                                        - Все функции из других планов
                                     </li>
                                 </ul>
                             </CardContent>
@@ -303,7 +303,7 @@ export function BillingForm({
                                 <Button
                                     type="submit"
                                     className={cn(buttonVariants())}>
-                                    Contact Sales
+                                    Связаться с  менеджером
                                 </Button>
                             </CardFooter>
                         </Card>

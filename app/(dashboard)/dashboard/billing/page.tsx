@@ -11,8 +11,8 @@ import { stripe } from "@/lib/stripe"
 import { getUserSubscriptionPlan } from "@/lib/subscription"
 
 export const metadata = {
-    title: `${siteConfig.name} - Billing`,
-    description: "Manage billing and your subscription plan.",
+    title: `${siteConfig.name} - Платежи`,
+    description: "Управление платежами и вашим планом подписки.",
 }
 
 export default async function BillingPage() {
@@ -36,8 +36,8 @@ export default async function BillingPage() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Billing"
-                text="Manage billing and your subscription plan. For more information about our plans, visit our documentation pricing page or you can ask our chatbot."
+                heading="Платежи"
+                text="Управление платежами и вашим планом подписки. Для получения более подробной информации о наших планах, посетите нашу страницу цен или можете спросить нашего чатбота."
             />
             
             <BillingForm

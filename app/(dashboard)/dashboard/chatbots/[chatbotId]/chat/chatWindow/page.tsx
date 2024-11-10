@@ -8,7 +8,6 @@ import { Icons } from "@/components/icons"
 
 var ipRangeCheck = require("ip-range-check");
 
-
 interface ChatbotSettingsProps {
     params: { chatbotId: string, defaultMessage: string, withExitX: boolean, clientSidePrompt: string }
 }
@@ -111,6 +110,7 @@ export default async function ChatbotPage({ params }: ChatbotSettingsProps) {
         bannedIps: chatbot.bannedIps,
         allowEveryone: chatbot.allowEveryone,
         allowedIpRanges: chatbot.allowedIpRanges,
+        fontSize: '14px' // Добавляем значение по умолчанию для fontSize
     }
 
     return (

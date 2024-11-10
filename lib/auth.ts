@@ -2,6 +2,7 @@ import { type NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
+import { getServerSession } from "next-auth";
 
 import { db } from './db';
 import { sendWelcomeEmail } from "./emails/send-welcome";
@@ -36,10 +37,10 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async session({ token, session }) {
       if (token) {
-        session!.user!.id = token.id
-        session!.user!.name = token.name
-        session!.user!.email = token.email
-        session!.user!.image = token.picture
+        session!.user!.id = token.id as string
+        session!.user!.name = token.name as string
+        session!.user!.email = token.email as string
+        session!.user!.image = token.picture as string
       }
 
       return session
@@ -76,3 +77,5 @@ export const authOptions: NextAuthOptions = {
     }
   },
 };
+
+export const auth = () => getServerSession(authOptions);

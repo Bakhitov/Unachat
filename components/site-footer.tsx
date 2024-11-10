@@ -15,13 +15,8 @@ export function SiteFooter({ simpleFooter, className }: SiteFooterProps) {
         {!simpleFooter &&
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-gray-700">Explore</h3>
+              <h3 className="text-lg font-semibold text-gray-700">О приложении</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link className="text-base text-gray-500 hover:text-blue-500" href="https://openassistantgpt.io/docs">
-                    Documentation
-                  </Link>
-                </li>
                 <li>
                   <Link className="text-base text-gray-500 hover:text-blue-500" href="/login">
                     App
@@ -30,16 +25,16 @@ export function SiteFooter({ simpleFooter, className }: SiteFooterProps) {
               </ul>
             </div>
             <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-gray-700">Social</h3>
+              <h3 className="text-lg font-semibold text-gray-700">Соц.сети</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link target="_blank" className="text-base text-gray-500 hover:text-blue-500" href={siteConfig.links.github}>
-                    Github
+                  <Link target="_blank" className="text-base text-gray-500 hover:text-blue-500" href={siteConfig.links.twitter}>
+                    Twitter
                   </Link>
                 </li>
-                <li>
-                  <Link target="_blank" className="text-base text-gray-500 hover:text-blue-500" href={siteConfig.links.productHunt}>
-                    ProductHunt
+                <li>  
+                  <Link target="_blank" className="text-base text-gray-500 hover:text-blue-500" href={siteConfig.links.instagram}>
+                    Instagram
                   </Link>
                 </li>
               </ul>
@@ -47,7 +42,7 @@ export function SiteFooter({ simpleFooter, className }: SiteFooterProps) {
           </div>
         }
         <div className="flex justify-between items-center border-t border-gray-200 mt-8 pt-4">
-          <div className="text-sm text-gray-500 flex flex-row"> <Icons.bot className="mr-2" /> © 2023 OpenAssistantGPT. All rights reserved.</div>
+          <div className="text-sm text-gray-500 flex flex-row"> <Icons.bot className="mr-2" /> © 2024 Onaychat. All rights reserved.</div>
           <div className="flex items-center space-x-4">
             <Link className="text-sm text-gray-500 hover:text-blue-500" href="#">
             </Link>

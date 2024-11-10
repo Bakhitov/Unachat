@@ -6,8 +6,8 @@ export default function UploadFileLoading() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Upload file"
-                text="Upload a file and then you'll be able to use it with your chatbot."
+                heading="Загрузить файл"
+                text="Загрузите файл, и тогда вы сможете использовать его с вашим чатботом."
             />
             <div className="grid gap-10">
                 <CardSkeleton />

@@ -12,8 +12,8 @@ import { NotificationSettingsForm } from "@/components/notification-settings-for
 import { db } from "@/lib/db"
 
 export const metadata = {
-    title: `${siteConfig.name} - Settings`,
-    description: "Manage Account and Website Settings.",
+    title: `${siteConfig.name} - Настройки`,
+    description: "Управление учетной записью и настройками сайта.",
 }
 
 export default async function SettingsPage() {
@@ -36,8 +36,8 @@ export default async function SettingsPage() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Settings"
-                text="Manage Account and Website Settings."
+                heading="Настройки"
+                text="Управление учетной записью и настройками сайта."
             />
             <div className="grid gap-10">
                 <div className="grid gap-10">

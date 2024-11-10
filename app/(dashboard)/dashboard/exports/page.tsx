@@ -44,16 +44,16 @@ export default async function MessagesExportPage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Messages Export" text="Export Messages from your chatbot. This feature will generate a JSON file with all the messages received by a chatbot.">
+            <DashboardHeader heading="Экспорт сообщений" text="Экспорт сообщений из вашего чатбота. Эта функция создаст JSON файл со всеми сообщениями, полученными от чатбота.">
             </DashboardHeader>
             <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4" role="alert">
-                <p className="font-bold text-md">Need help when using message exports?</p>
-                <p>Check our guide on how to use message exports correctly.</p>
-                <p>Click <a href='/guides/how-to-use-message-exports-correctly' className="underline">here</a> to open our guide.</p>
+                <p className="font-bold text-md">Нужна помощь при использовании экспорта сообщений?</p>
+                <p>Проверьте наш гайд о том, как правильно использовать экспорт сообщений.</p>
+                <p>Нажмите <a href='/guides/how-to-use-message-exports-correctly' className="underline">здесь</a>, чтобы открыть наш гайд.</p>
             </div>
             <div className="flex flex-col">
                 <div className="mb-4 flex items-center justify-between px-2">
-                    <Label className="text-lg">All Message Export</Label>
+                    <Label className="text-lg">Все экспорты сообщений</Label>
                     <MessageExportButton variant={"outline"} />
                 </div>
                 {chatbots.length > 0 && chatbots.some(chatbot => chatbot.ChatbotMessagesExport.length > 0) ?
@@ -77,9 +77,9 @@ export default async function MessagesExportPage() {
                     : <div className="grid gap-10">
                         <EmptyPlaceholder>
                             <EmptyPlaceholder.Icon name="folder" />
-                            <EmptyPlaceholder.Title>Create a message export now</EmptyPlaceholder.Title>
+                            <EmptyPlaceholder.Title>Создать экспорт сообщений</EmptyPlaceholder.Title>
                             <EmptyPlaceholder.Description>
-                                You can export your chatbot messages to a file.
+                                Вы можете экспортировать сообщения вашего чатбота в файл.
                             </EmptyPlaceholder.Description>
                             <MessageExportButton variant={"outline"} />
                         </EmptyPlaceholder>

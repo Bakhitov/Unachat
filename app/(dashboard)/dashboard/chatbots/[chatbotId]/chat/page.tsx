@@ -39,7 +39,7 @@ export default async function ChatbotPage({ params }: ChatbotSettingsProps) {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Chat" text="Start chatting with your chatbot">
+            <DashboardHeader heading="Чат" text="Начните общение с вашим чатботом">
                 <Link
                     href={`/dashboard/chatbots`}
                     className={cn(
@@ -49,7 +49,7 @@ export default async function ChatbotPage({ params }: ChatbotSettingsProps) {
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>

@@ -21,7 +21,7 @@ export default async function CrawlerCreatePage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Create your crawler" text="Create a crawler to start importing files.">
+            <DashboardHeader heading="Создать краулер" text="Создать краулер для начала импорта файлов.">
                 <Link
                     href="/dashboard/crawlers"
                     className={cn(
@@ -31,7 +31,7 @@ export default async function CrawlerCreatePage() {
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>

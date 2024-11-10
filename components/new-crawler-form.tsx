@@ -57,21 +57,21 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
         if (!response?.ok) {
             if (response.status === 402) {
                 return toast({
-                    title: "Crawler limit reached.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Предел краулеров достигнут.",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your crawler was not saved. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш краулер не был сохранен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your crawler has been saved.",
+            description: "Ваш краулер был успешно сохранен.",
         })
         const json = await response.json()
         router.push(`/dashboard/crawlers/${json.id}/crawl`)
@@ -86,7 +86,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Create new crawler</CardTitle>
+                        <CardTitle>Создать новый краулер</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField
@@ -95,7 +95,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="name">
-                                        Display Name
+                                        Отображаемое название
                                     </FormLabel>
                                     <Input
                                         id="name"
@@ -103,7 +103,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                                         size={32}
                                     />
                                     <FormDescription>
-                                        The name that will be displayed in the dashboard
+                                        Отображаемое название в панели управления
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -115,14 +115,14 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="crawlUrl">
-                                        Crawling URL
+                                    URL для кролирования
                                     </FormLabel >
                                     <Input
                                         onChange={field.onChange}
                                         id="crawlUrl"
                                     />
                                     <FormDescription>
-                                        The URL that we will start the crawling on. Make sure the URL starts with the protocol https:// or http://
+                                        URL, с которого мы начнем кролирование. Убедитесь, что URL начинается с протокола https:// или http://
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -141,8 +141,8 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                                         onChange={field.onChange}
                                     />
                                     <FormDescription>
-                                        When we crawl we will make sure to always match with this string.
-                                        If you want to crawl everything put the same value as the Crawling URL.
+                                        Когда мы кролим, мы будем всегда сопоставлять с этой строкой.
+                                        Если вы хотите кролить все, поставьте ту же значение, что и URL для кролирования.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -154,7 +154,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="selector">
-                                        Selector
+                                        Селектор
                                     </FormLabel>
                                     <Input
                                         id="selector"
@@ -162,9 +162,9 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                                         value={field.value}
                                     />
                                     <FormDescription>
-                                        The selector will be used by the query selector to get the content from a specific part of the website.
-                                        You can test your query selector when you open your website with F12 in the console and do this: document.querySelector(&quot;[id=&apos;root&apos;]&quot;).
-                                        If you want to extract all the content simply use: &apos;body&apos;
+                                        Селектор будет использоваться для получения контента из определенной части сайта.
+                                        Вы можете протестировать ваш селектор, когда откроете ваш сайт с F12 в консоли и сделаете это: document.querySelector(&quot;[id=&apos;root&apos;]&quot;).
+                                        Если вы хотите извлечь все контент, просто используйте: &apos;body&apos;
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -176,7 +176,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="maxPagesToCrawl">
-                                        Number of pages to crawl
+                                        Количество страниц для кролирования
                                     </FormLabel>
                                     <Input
                                         id="maxPagesToCrawl"
@@ -185,8 +185,8 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                                         value={field.value}
                                     />
                                     <FormDescription>
-                                        Set a maximum of pages to crawl. You can choose a number between 1 and 200.
-                                        If you have more than 200 pages we recommend using your API or other solution to get the data.
+                                        Установите максимальное количество страниц для кролирования. Вы можете выбрать число от 1 до 200.
+                                        Если у вас более 200 страниц, мы рекомендуем использовать ваш API или другую решение для получения данных.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -202,7 +202,7 @@ export function NewCrawlerForm({ className, ...props }: React.HTMLAttributes<HTM
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Create</span>
+                            <span>Создать</span>
                         </button>
                     </CardFooter>
                 </Card>

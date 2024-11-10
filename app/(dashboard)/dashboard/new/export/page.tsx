@@ -33,7 +33,7 @@ export default async function CreateMessageExportPage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Export Messages" text="Create an export of your chatbot messages.">
+            <DashboardHeader heading="Экспорт сообщений" text="Создать экспорт сообщений вашего чатбота.">
                 <Link
                     href="/dashboard/exports"
                     className={cn(
@@ -43,7 +43,7 @@ export default async function CreateMessageExportPage() {
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>

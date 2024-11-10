@@ -46,9 +46,9 @@ export function DashboardNav({ items }: DashboardNavProps) {
             </div>
             <Card>
                 <CardHeader>
-                    <CardTitle className="text-sm">Upgrade your plan</CardTitle>
+                    <CardTitle className="text-sm">Обновите ваш план</CardTitle>
                     <CardDescription className="text-xs">
-                        Unlock more features by upgrading your plan and get premium support.
+                        Разблокируйте больше функций, обновив ваш план и получите премиум поддержку.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

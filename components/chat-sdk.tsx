@@ -30,6 +30,7 @@ export interface ClientSideChatbotProps {
   userReplyBackgroundColor: string;
   userReplyTextColor: string;
   chatbotLogoURL?: string;
+  fontSize?: string; // Делаем свойство опциональным
 
   chatInputStyle: string;
 
@@ -83,9 +84,10 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
     <OpenAssistantGPTChat chatbot={{
       ...chatbot,
       displayFooterText: chatbot.displayBranding,
-      footerLink: 'https://openassistantgpt.io',
-      footerTextName: 'OpenAssistantGPT',
+      footerLink: 'https://onaychat.vercel.app',
+      footerTextName: 'Onaychat',
       chatbotLogoURL: chatbot.chatbotLogoURL || '',
+      fontSize: chatbot.fontSize || '14px', // Устанавливаем значение по умолчанию
     }} path={`/api/chatbots/${chatbot.id}/chat`} withExitX={withExitX} clientSidePrompt={clientSidePrompt} defaultMessage={defaultMessage} {...props} 
     onMessagesChange={handleMessagesChange}
     onThreadIdChange={handleThreadIdChange}

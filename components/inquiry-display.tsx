@@ -1,6 +1,6 @@
 "use client"
 
-import format from "date-fns/format"
+import { format } from "date-fns"
 import {
     Trash2,
 } from "lucide-react"
@@ -38,15 +38,15 @@ export function InquiryDisplay({ inquiry }: InquiryDisplayProps) {
             if (response.ok) {
                 toast(
                     {
-                        title: "Inquiry deleted",
-                        description: "The inquiry has been successfully deleted",
+                        title: "Запрос удален",
+                        description: "Запрос был успешно удален",
                     }
                 )
             } else {
                 toast(
                     {
-                        title: "Inquiry not deleted",
-                        description: "The inquiry could not be deleted",
+                        title: "Запрос не удален",
+                        description: "Запрос не удален",
                         variant: "destructive"
                     }
                 )
@@ -65,10 +65,10 @@ export function InquiryDisplay({ inquiry }: InquiryDisplayProps) {
                         <TooltipTrigger asChild>
                             <Button onClick={deleteInquiry} variant="ghost" size="icon" disabled={!inquiry}>
                                 <Trash2 className="h-4 w-4" />
-                                <span className="sr-only">Delete</span>
+                                <span className="sr-only">Удалить</span>
                             </Button>
                         </TooltipTrigger>
-                        <TooltipContent>Delete</TooltipContent>
+                        <TooltipContent>Удалить</TooltipContent>
                     </Tooltip>
                 </div>
             </div>
@@ -84,7 +84,7 @@ export function InquiryDisplay({ inquiry }: InquiryDisplayProps) {
                                 <div className="font-semibold">{inquiry.email}</div>
                                 <div className="line-clamp-1 text-xs">{inquiry.createdAt.toISOString()}</div>
                                 <div className="line-clamp-1 text-xs">
-                                    <span className="font-medium">Thread Id:</span> {inquiry.threadId}
+                                    <span className="font-medium"> ID потока:</span> {inquiry.threadId}
                                 </div>
                             </div>
                         </div>
@@ -102,9 +102,9 @@ export function InquiryDisplay({ inquiry }: InquiryDisplayProps) {
                                 <svg className="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                                 </svg>
-                                <span className="sr-only">Info</span>
+                                <span className="sr-only">Информация</span>
                                 <div>
-                                    <span className="font-medium">Your client question: </span> {inquiry.inquiry}
+                                    <span className="font-medium">Ваш вопрос клиента: </span> {inquiry.inquiry}
                                 </div>
                             </div>
                             {inquiry.messages.map((message: any) => {
@@ -124,15 +124,13 @@ export function InquiryDisplay({ inquiry }: InquiryDisplayProps) {
                                 )
                             })}
                         </div>
-
                     </ScrollArea>
                 </div>
             ) : (
                 <div className="p-8 text-center text-muted-foreground">
-                    No message selected
+                    Нет сообщения
                 </div>
-            )
-            }
-        </div >
+            )}
+        </div>
     )
 }

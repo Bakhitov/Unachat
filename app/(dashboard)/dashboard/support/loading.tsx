@@ -6,8 +6,8 @@ export default function Loading() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Support"
-                text="Welcome to Our Support Page."
+                heading="Поддержка"
+                text="Добро пожаловать на страницу поддержки."
             />
             <div className="grid gap-10">
                 <CardSkeleton />

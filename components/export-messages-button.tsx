@@ -43,7 +43,7 @@ export function MessageExportButton({
             ) : (
                 <Icons.add className="mr-2 h-4 w-4" />
             )}
-            Export Messages
+            Экспорт сообщений
         </button>
     )
 }

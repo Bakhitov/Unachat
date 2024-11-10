@@ -55,21 +55,21 @@ export function OpenAIForm({ user, className, ...props }: UserNameFormProps) {
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Invalid API key.",
-                    description: "Your API key was invalid, try to generate a new one.",
+                    title: "Неверный API ключ.",
+                    description: "Ваш API ключ был неверным, попробуйте создать новый.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your OpenAI configuration was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваша конфигурация OpenAI не была обновлена. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your OpenAI configuration has been updated.",
+            description: "Ваша конфигурация OpenAI была обновлена.",
         })
 
         router.refresh()
@@ -84,13 +84,13 @@ export function OpenAIForm({ user, className, ...props }: UserNameFormProps) {
             >
                 <Card className={cn(className)}>
                     <CardHeader>
-                        <CardTitle>Configure your account</CardTitle>
+                        <CardTitle>Конфигурация вашего аккаунта</CardTitle>
                         <CardDescription>
-                            Your global api key for OpenAI will be used for all your global configurations. It is very important to set it before creating a chatbot.
-                            You can create your API Key <Link target="_blank" className="underline" href='https://platform.openai.com/api-keys'>here</Link>.
+                            Ваш глобальный API ключ для OpenAI будет использован для всех ваших глобальных конфигураций. Важно установить его перед созданием чатбота.
+                            Вы можете создать ваш API ключ <Link target="_blank" className="underline" href='https://platform.openai.com/api-keys'>здесь</Link>.
                             <br className="pb-2" />
                             <br className="pb-2" />
-                            You must <Link className="underline" href="https://platform.openai.com/settings/organization/billing/payment-methods"> add a payment method </Link> to your OpenAI account to increase rate limits even if only using their free credits.
+                            Вам необходимо <Link className="underline" href="https://platform.openai.com/settings/organization/billing/payment-methods"> добавить способ оплаты </Link> к вашему аккаунту OpenAI, чтобы увеличить ограничения по скорости, даже если вы используете их бесплатные кредиты.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -100,7 +100,7 @@ export function OpenAIForm({ user, className, ...props }: UserNameFormProps) {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="globalAPIKey">
-                                        OpenAI Global API Key
+                                        Глобальный API ключ OpenAI
                                     </FormLabel>
                                     <Input
                                         type="password"
@@ -108,7 +108,7 @@ export function OpenAIForm({ user, className, ...props }: UserNameFormProps) {
                                         id="globalAPIKey"
                                     />
                                     <FormDescription>
-                                        This API key will be used for your global configuration. You can choose to create a new one for your chatbot.
+                                        Этот API ключ будет использован для вашей глобальной конфигурации. Вы можете выбрать создать новый для вашего чатбота.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -124,7 +124,7 @@ export function OpenAIForm({ user, className, ...props }: UserNameFormProps) {
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

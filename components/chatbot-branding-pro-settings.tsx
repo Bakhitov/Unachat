@@ -58,27 +58,27 @@ export function ChatbotBrandingProSettingsForm({ chatbot, className, ...props }:
 
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             } else if (response.status === 402) {
                 return toast({
-                    title: "Chatbot not customizable.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Чатбот не настраиваем.",
+                    description: "Пожалуйста, обновитесь на более высокий план.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been updated.",
+            description: "Ваш чатбот был обновлен.",
         })
 
         router.refresh()
@@ -93,7 +93,7 @@ export function ChatbotBrandingProSettingsForm({ chatbot, className, ...props }:
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Chatbot Branding label</CardTitle>
+                        <CardTitle>Настройка брендинга чатбота</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField
@@ -103,10 +103,10 @@ export function ChatbotBrandingProSettingsForm({ chatbot, className, ...props }:
                                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            OpenAssistantGPT Branding Label
+                                            Настройка брендинга чатбота
                                         </FormLabel>
                                         <FormDescription>
-                                            Remove &quot;Powered by OpenAssistantGPT&quot; from the chatbot.
+                                            Удалить &quot;Разработано на  Onaychat&quot; из чатбота.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -128,7 +128,7 @@ export function ChatbotBrandingProSettingsForm({ chatbot, className, ...props }:
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

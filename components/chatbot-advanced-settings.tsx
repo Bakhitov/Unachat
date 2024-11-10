@@ -60,21 +60,21 @@ export function ChatbotAdvancedSettingsForm({ chatbot, ...props }: ChatbotFormPr
 
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your advanced settings are not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваши настройки не обновлены. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your advanced settings are now updated.",
+            description: "Ваши настройки теперь обновлены.",
         })
 
         router.refresh()
@@ -88,12 +88,12 @@ export function ChatbotAdvancedSettingsForm({ chatbot, ...props }: ChatbotFormPr
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Max Prompt Tokens</CardTitle>
+                        <CardTitle>Максимальное кол-во токенов запроса</CardTitle>
                         <CardDescription>
-                            This is the maximum number of tokens that can be used in a prompt and for completions, to find out more about tokens, please refer to the documentation.
-                            <Link href="https://platform.openai.com/docs/assistants/how-it-works/managing-threads-and-messages" className="underlined">Learn more</Link>
+                            Это максимальное количество токенов, которое может быть использовано в запросе и для завершения, чтобы узнать больше о токенах, пожалуйста, обратитесь к документации.
+                            <Link href="https://platform.openai.com/docs/assistants/how-it-works/managing-threads-and-messages" className="underlined">Узнать больше</Link>
                             <br />
-                            When using the File Attachments, we recommend setting the Max Prompt Token to no less than 20,000. For longer conversations or multiple interactions with File Attachments, consider increasing this limit to 50,000, or ideally, removing the Max Prompt Tokens limits altogether to get the highest quality results.
+                            При использовании вложений файлов мы рекомендуем установить максимальное количество токенов запроса не менее 20 000. Для более длинных диалогов или нескольких взаимодействий с вложениями файлов рассмотрите увеличение этого предела до 50 000, или, в идеале, полностью удалите ограничения на максимальное количество токенов запроса, чтобы получить наилучшие результаты.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -103,7 +103,7 @@ export function ChatbotAdvancedSettingsForm({ chatbot, ...props }: ChatbotFormPr
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="maxPromptTokens">
-                                        Max Prompt Tokens
+                                        Максимальное кол-во токенов запроса
                                     </FormLabel>
 
                                     <Input
@@ -122,7 +122,7 @@ export function ChatbotAdvancedSettingsForm({ chatbot, ...props }: ChatbotFormPr
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="maxCompletionTokens">
-                                        Max Completion Tokens
+                                        Максимальное кол-во токенов завершения
                                     </FormLabel>
 
                                     <Input
@@ -145,7 +145,7 @@ export function ChatbotAdvancedSettingsForm({ chatbot, ...props }: ChatbotFormPr
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

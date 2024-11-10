@@ -21,12 +21,17 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { Chatbot } from "@prisma/client"
 import { exportMessagesSchema } from "@/lib/validations/exportMessages"
-import Select from 'react-select';
+import Select from 'react-select'
 
 type FormData = z.infer<typeof exportMessagesSchema>
 
 interface NewMessageExportFormProps extends React.HTMLAttributes<HTMLFormElement> { 
     chatbots: Pick<Chatbot, 'id' | 'name'>[]
+}
+
+interface Option {
+    value: string
+    label: string
 }
 
 export function NewMessageExportForm({ chatbots, className, ...props }: NewMessageExportFormProps) {
@@ -56,24 +61,23 @@ export function NewMessageExportForm({ chatbots, className, ...props }: NewMessa
         setIsSaving(false)
 
         if (!response?.ok) {
-
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your export was not saved. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш экспорт не был сохранен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your export was created.",
+            description: "Ваш экспорт был создан.",
         })
         router.refresh()
         router.push(`/dashboard/exports`)
@@ -88,7 +92,7 @@ export function NewMessageExportForm({ chatbots, className, ...props }: NewMessa
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Export chatbot messages</CardTitle>
+                        <CardTitle>Экспорт сообщений чатбота</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField
@@ -97,7 +101,7 @@ export function NewMessageExportForm({ chatbots, className, ...props }: NewMessa
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="lastXDays">
-                                        Export messages from the last X days
+                                        Экспортировать сообщения за последние X дней
                                     </FormLabel>
                                     <Input
                                         id="lastXDays"
@@ -105,7 +109,7 @@ export function NewMessageExportForm({ chatbots, className, ...props }: NewMessa
                                         onChange={e => field.onChange(parseInt(e.target.value))}
                                     />
                                     <FormDescription>
-                                        Export messages from the last X days. It can be any number between 1 and 365.
+                                        Экспортировать сообщения за последние X дней. Может быть любым числом от 1 до 365.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -117,23 +121,26 @@ export function NewMessageExportForm({ chatbots, className, ...props }: NewMessa
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="chatbotId">
-                                        Chatbot To Export Messages
+                                        Чатбот, из которого экспортировать сообщения
                                     </FormLabel>
-                                    <Select
-                                        onChange={value => field.onChange(value!.value)}
-                                        defaultValue={field.value}
-                                        id="chatbotId"
-                                        options={
-                                            chatbots.map(chatbot => ({
+                                    <Select<Option>
+                                        onChange={value => field.onChange(value?.value)}
+                                        value={chatbots
+                                            .filter(chatbot => chatbot.id === field.value)
+                                            .map(chatbot => ({
                                                 value: chatbot.id,
-                                                label: chatbot.name,
-                                            }))
-                                        }
+                                                label: chatbot.name
+                                            }))[0]}
+                                        id="chatbotId"
+                                        options={chatbots.map(chatbot => ({
+                                            value: chatbot.id,
+                                            label: chatbot.name,
+                                        }))}
                                         className="basic-multi-select"
                                         classNamePrefix="select"
                                     />
                                     <FormDescription>
-                                        The chatbot from which to export messages
+                                        Чатбот, из которого экспортировать сообщения
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -149,11 +156,11 @@ export function NewMessageExportForm({ chatbots, className, ...props }: NewMessa
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Create</span>
+                            <span>Создать</span>
                         </button>
                     </CardFooter>
                 </Card>
             </form>
-        </Form >
+        </Form>
     )
 }

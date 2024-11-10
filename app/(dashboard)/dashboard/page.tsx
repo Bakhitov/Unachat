@@ -144,25 +144,25 @@ export default async function DashboardPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Dashboard" text="Welcome to Your Chatbot Dashboard">
+      <DashboardHeader heading="Дашборд" text="Добро пожаловать в ваш чатбот">
         <ChatbotCreateButton />
       </DashboardHeader>
       <div>
         {bots === 0 &&
           <div className="mb-4 bg-blue-100 border-l-4 border-blue-500 text-black p-4" role="info">
-            <p className="font-bold text-md">Welcome to {siteConfig.name} 🎉</p>
-            <p className="text-sm">You are probably new to this platform.</p>
-            <p className="text-sm">We recommend starting with our <a className="underline" href="/dashboard/onboarding">onboarding</a> for a step-by-step guide on how to create your first chatbot.</p>
-            <p className="text-sm">If you prefer you can also start with our <a target="_blank" className="underline" href="/guides/how-to-build-smart-chatbot-for-your-webiste">tutorial</a>.</p>
+            <p className="font-bold text-md">Добро пожаловать в {siteConfig.name} 🎉</p>
+            <p className="text-sm">Вы, вероятно, новичок на этой платформе.</p>
+            <p className="text-sm">Мы рекомендуем начать с нашего <a className="underline" href="/dashboard/onboarding">Быстрый старт! </a> для пошагового руководства по созданию вашего первого чатбота.</p>
+            <p className="text-sm">Если вы предпочитаете, вы можете также начать с нашего <a target="_blank" className="underline" href="/guides/how-to-build-smart-chatbot-for-your-webiste">учебника</a>.</p>
             <br />
-            <a href="/dashboard/onboarding"><Button><p className="pr-2">Open Onboarding</p>  <Icons.help className="h-4 w-4" /> ‍</Button></a>
+            <a href="/dashboard/onboarding"><Button><p className="pr-2">Открыть быстрый старт</p>  <Icons.help className="h-4 w-4" /> ‍</Button></a>
           </div>
         }
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Total Chatbots
+                Всего чатботов
               </CardTitle>
               <Icons.bot className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -173,7 +173,7 @@ export default async function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Total Crawlers
+                Всего краулеров
               </CardTitle>
               <Icons.post className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -184,7 +184,7 @@ export default async function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Total Files
+                Всего файлов
               </CardTitle>
               <Icons.folder className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -195,7 +195,7 @@ export default async function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Messages last 30 days
+                Сообщений за 30 дней
               </CardTitle>
               <Icons.message className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -208,7 +208,7 @@ export default async function DashboardPage() {
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Messages per day</CardTitle>
+            <CardTitle>Сообщений за день</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
             <MessagesOverview items={data} />
@@ -216,7 +216,7 @@ export default async function DashboardPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Recent User Inquiries</CardTitle>
+            <CardTitle>Последние запросы пользователей</CardTitle>
           </CardHeader>
           <CardContent>
             {userInquiries.length ?
@@ -233,9 +233,9 @@ export default async function DashboardPage() {
               <div className="grid gap-10">
                 <EmptyPlaceholder className="border-0">
                   <EmptyPlaceholder.Icon name="help" />
-                  <EmptyPlaceholder.Title>No User Inquiry</EmptyPlaceholder.Title>
+                  <EmptyPlaceholder.Title>Нет новых запросов пользователей</EmptyPlaceholder.Title>
                   <EmptyPlaceholder.Description>
-                    You don&apos;t have any new user inquiries. User Inquiries are disabled by default, you can enable them in your chatbot settings.
+                    У вас нет новых запросов пользователей. Запросы пользователей по умолчанию отключены, вы можете их включить в настройках вашего чатбота.
                   </EmptyPlaceholder.Description>
                 </EmptyPlaceholder>
               </div>
@@ -245,7 +245,7 @@ export default async function DashboardPage() {
       </div>
       <Card>
         <CardHeader>
-          <CardTitle>Recent Chatbot Errors</CardTitle>
+          <CardTitle>Последние ошибки чатбота</CardTitle>
         </CardHeader>
         <CardContent>
           {chatbotErrors.length ?
@@ -262,9 +262,9 @@ export default async function DashboardPage() {
             <div className="grid gap-10">
               <EmptyPlaceholder className="border-0">
                 <EmptyPlaceholder.Icon name="warning" />
-                <EmptyPlaceholder.Title>No Chatbot Error</EmptyPlaceholder.Title>
+                <EmptyPlaceholder.Title>Нет ошибок чатбота</EmptyPlaceholder.Title>
                 <EmptyPlaceholder.Description>
-                  If you have any errors you will see a comprehensive breakdown of user-generated errors within your chatbot.
+                  Если у вас есть ошибки, вы увидите подробный разбор ошибок, созданных пользователями в вашем чатботе.
                 </EmptyPlaceholder.Description>
               </EmptyPlaceholder>
             </div>

@@ -1,17 +1,15 @@
-import { Message } from 'ai'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
-
-import { MathJax, MathJaxContext } from 'better-react-mathjax'
-
-import Image from 'next/image'
-import { cn } from '@/lib/utils'
-import { CodeBlock } from '@/components/ui/codeblock'
-import { MemoizedReactMarkdown } from '@/components/markdown'
-import { Icons } from '@/components/icons'
-import { ExternalLink } from '@/components/external-link'
-import { Chatbot } from '@prisma/client'
-import { ChatMessageActions } from './chat-message-actions'
+import { Message } from "ai"
+import remarkGfm from "remark-gfm"
+import remarkMath from "remark-math"
+import { MathJax, MathJaxContext } from "better-react-mathjax"
+import Image from "next/image"
+import { cn } from "@/lib/utils"
+import { CodeBlock } from "@/components/ui/codeblock"
+import { MemoizedReactMarkdown } from "@/components/markdown"
+import { Icons } from "@/components/icons"
+import { ExternalLink } from "@/components/external-link"
+import { Chatbot } from "@prisma/client"
+import { ChatMessageActions } from "./chat-message-actions"
 
 export interface ChatMessageProps {
     message: Message
@@ -20,49 +18,51 @@ export interface ChatMessageProps {
     isFirst?: boolean
 }
 
-const getDirection = (isRTL: boolean) => isRTL ? 'rtl' : 'ltr';
+const getDirection = (isRTL: boolean) => isRTL ? "rtl" : "ltr";
 
 export function ChatMessage({ message, children, chatbot, isFirst, ...props }: ChatMessageProps) {
     return (
         <>
             {
-                message.role === 'user' ? (
+                message.role === "user" ? (
                     <div
-                        className={cn('pl-10 group relative mb-4 flex justify-end items-end')}
+                        className={cn("pl-10 group relative mb-4 flex justify-end items-end")}
                         {...props}
                     >
                         <p
                             style={{ color: chatbot.userReplyTextColor, background: chatbot.userReplyBackgroundColor }}
                             className="p-2 text-sm rounded-lg mr-4 whitespace-pre-wrap"
-                            dir={getDirection(chatbot.rightToLeftLanguage)} // Set text direction
+                            dir={getDirection(chatbot.rightToLeftLanguage)}
                         >
                             <svg fill={chatbot.userReplyBackgroundColor} className="absolute bottom-[0px] right-11" height="14" width="13"><path d="M6 .246c-.175 5.992-1.539 8.89-5.5 13.5 6.117.073 9.128-.306 12.5-3L6 .246Z"></path></svg>
                             {message.content}
                         </p>
                         <div
-                            className={cn(
-                                'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
-                                'bg-background'
-                            )}
+                            className="flex size-8 shrink-0 select-none items-center justify-center rounded-md"
                         >
                             <Icons.user />
                         </div>
                     </div>
                 ) : (
                     <div
-                        className={cn('pr-10 group relative mb-4 flex items-start ')}
+                        className={cn("pr-10 group relative mb-4 flex items-start")}
                         {...props}
                     >
-                        {chatbot.chatbotLogoURL ? <Image className='size-8' width={50} height={50} src={chatbot.chatbotLogoURL} alt="chatbot logo" /> :
+                        {chatbot.chatbotLogoURL ? (
+                            <Image 
+                                className="size-8" 
+                                width={50} 
+                                height={50} 
+                                src={chatbot.chatbotLogoURL} 
+                                alt="chatbot logo" 
+                            />
+                        ) : (
                             <div
-                                className={cn(
-                                    'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
-                                    'bg-primary text-primary-foreground'
-                                )}
+                                className="flex size-8 shrink-0 select-none items-center justify-center rounded-md"
                             >
                                 <Icons.bot />
                             </div>
-                        }
+                        )}
                         <div className="flex-1 px-1 ml-4">
                             {message.content == "loading" ? <Icons.loading className="animate-spin" /> :
                                 <>
@@ -81,7 +81,7 @@ export function ChatMessage({ message, children, chatbot, isFirst, ...props }: C
                                                 return <p className="mb-2 last:mb-0" dir={getDirection(chatbot.rightToLeftLanguage)}>{children}</p>
                                             },
                                             code({ node, className, children, ...props }) {
-                                                const match = /language-(\w+)/.exec(className || '')
+                                                const match = /language-(\w+)/.exec(className || "")
 
                                                 if (!match) {
                                                     return (
@@ -91,10 +91,10 @@ export function ChatMessage({ message, children, chatbot, isFirst, ...props }: C
                                                     )
                                                 }
 
-                                                if (match && (match[1] === 'math' || match[1] === 'latex')) {
+                                                if (match && (match[1] === "math" || match[1] === "latex")) {
                                                     return (
                                                         <MathJaxContext>
-                                                            <MathJax>{children || ''}</MathJax>
+                                                            <MathJax>{children || ""}</MathJax>
                                                         </MathJaxContext>
                                                     )
                                                 }
@@ -102,8 +102,8 @@ export function ChatMessage({ message, children, chatbot, isFirst, ...props }: C
                                                 return (
                                                     <CodeBlock
                                                         key={Math.random()}
-                                                        language={(match && match[1]) || ''}
-                                                        value={String(children).replace(/\n$/, '')}
+                                                        language={(match && match[1]) || ""}
+                                                        value={String(children).replace(/\n$/, "")}
                                                         {...props}
                                                     />
                                                 )
@@ -114,7 +114,7 @@ export function ChatMessage({ message, children, chatbot, isFirst, ...props }: C
                                     </MemoizedReactMarkdown>
                                     {!isFirst ?
                                         <ChatMessageActions message={message} /> :
-                                        <div className='size-3'></div>
+                                        <div className="size-3"></div>
                                     }
                                 </>
                             }

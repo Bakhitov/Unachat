@@ -40,7 +40,7 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
         setIsSaving(true)
 
         if (!inputFileRef.current?.files) {
-            throw new Error('No file selected');
+            throw new Error('Файл не выбран');
         }
 
         const file = inputFileRef.current.files[0];
@@ -58,7 +58,7 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Invalid request",
+                    title: "Неверный запрос",
                     description: await response.text(),
                     variant: "destructive",
                 })
@@ -66,21 +66,21 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
 
             if (response.status === 402) {
                 return toast({
-                    title: "File limit reached.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Превышен лимит файлов",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your file was not uploaded. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш файл не был загружен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your file has been uploaded.",
+            description: "Ваш файл был загружен.",
         })
 
         router.refresh()
@@ -95,9 +95,9 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Upload File</CardTitle>
+                        <CardTitle>Загрузить файл</CardTitle>
                         <CardDescription>
-                            Upload a file to be used for training.
+                            Загрузите файл, и тогда вы сможете использовать его с вашим чатботом.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -107,7 +107,7 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="file">
-                                        File
+                                        Файл
                                     </FormLabel>
                                     <Input
                                         type="file"
@@ -116,7 +116,7 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
                                         id="file"
                                     />
                                     <FormDescription>
-                                        the file to be used for training.
+                                        Файл для обучения.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -132,7 +132,7 @@ export function UploadFileForm({ className, ...props }: UploadFileFormProps) {
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Upload</span>
+                            <span>Загрузить</span>
                         </button>
                     </CardFooter>
                 </Card>

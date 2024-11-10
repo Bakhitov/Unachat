@@ -74,21 +74,21 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your advanced settings are not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваши настройки не обновлены. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your advanced settings are now updated.",
+            description: "Ваши настройки теперь обновлены.",
         })
 
         router.refresh()
@@ -102,9 +102,9 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Chatbot Security</CardTitle>
+                        <CardTitle>Безопасность чатбота</CardTitle>
                         <CardDescription>
-                            Where you can configure the security settings for your chatbot.
+                            Здесь вы можете настроить безопасные настройки для вашего чатбота.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -114,15 +114,15 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="bannedIps">
-                                        Banned IPs and IP Ranges
+                                        Запрещенные IP и диапазоны IP
                                     </FormLabel>
                                     <FormDescription>
-                                        The feature allows you to ban IPs and IP ranges from accessing the chatbot. Press ENTER after entering each IP or IP range to add many.
+                                        Эта функция позволяет запретить доступ к чатботу по определенным IP и диапазонам IP. Нажмите ENTER после ввода каждого IP или диапазона IP, чтобы добавить несколько.
                                     </FormDescription>
                                     <FormControl>
                                         <TagInput
                                             id="bannedIps"
-                                            placeholder="Enter IP Address 10.54.30.0"
+                                            placeholder="Введите IP-адрес 127.0.0.1"
                                             tags={bannedIps}
                                             className="sm:min-w-[450px]"
                                             inlineTags={false}
@@ -146,10 +146,10 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
                                 <FormItem className="flex flex-row items-center justify-between">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Allow Everyone  to access the chatbot
+                                            Разрешить доступ всем
                                         </FormLabel>
                                         <FormDescription>
-                                            This feature allows everyone to access the chatbot. You must allow IPs to access the chatbot.
+                                            Эта функция позволяет всем пользователям получить доступ к чатботу. Вам необходимо разрешить доступ по IP.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -167,15 +167,15 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="allowedIpRanges">
-                                        Allowed IPs and IP Ranges
+                                        Разрешенные IP и диапазоны IP
                                     </FormLabel>
                                     <FormDescription>
-                                        This feature allows you to specify the IPs and IP ranges that can access the chatbot. Press ENTER after entering each IP or IP range to add many.
+                                        Эта функция позволяет указать IP и диапазоны IP, которые могут получить доступ к чатботу. Нажмите ENTER после ввода каждого IP или диапазона IP, чтобы добавить несколько.
                                     </FormDescription>
                                     <FormControl>
                                         <TagInput
                                             id="allowedIpRanges"
-                                            placeholder="Enter a IP Range 10.0.0.0/16"
+                                            placeholder="Введите диапазон IP 10.0.0.0/16"
                                             tags={allowedIPs}
                                             className="sm:min-w-[450px]"
                                             inlineTags={false}
@@ -202,7 +202,7 @@ export function ChatbotAdvancedSecuritySettingsForm({ chatbot, ...props }: Chatb
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

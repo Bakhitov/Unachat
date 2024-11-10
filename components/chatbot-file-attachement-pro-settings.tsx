@@ -58,27 +58,27 @@ export function ChatbotFileAttachementProSettingsForm({ chatbot, className, ...p
 
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             } else if (response.status === 402) {
                 return toast({
-                    title: "Chatbot not customizable.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Чатбот не настраиваемый.",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been updated.",
+            description: "Ваш чатбот был обновлен.",
         })
 
         router.refresh()
@@ -93,7 +93,7 @@ export function ChatbotFileAttachementProSettingsForm({ chatbot, className, ...p
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Chatbot File Attachement</CardTitle>
+                        <CardTitle>Прикрепление файлов к чатботу</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField
@@ -103,10 +103,10 @@ export function ChatbotFileAttachementProSettingsForm({ chatbot, className, ...p
                                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Client Side File Attachement
+                                            Прикрепление файлов на стороне клиента
                                         </FormLabel>
                                         <FormDescription>
-                                            Enables the user to add a file in the chat. The file will be sent to the chatbot.
+                                            Включает возможность пользователю добавлять файл в чат. Файл будет отправлен к чатботу.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -128,7 +128,7 @@ export function ChatbotFileAttachementProSettingsForm({ chatbot, className, ...p
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

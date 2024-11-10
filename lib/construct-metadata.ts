@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export function constructMetadata({
-    title = `OpenAssistantGPT - Build your own chatbot with OpenAI Assistant`,
-    description = `OpenAssistantGPT is the open-source platform for building chatbot using the OpenAI Assistant API. We offer seamless integration for effortlessly incorporating a chatbot into your website.`,
+    title = `Onaychat - Создайте свой собственный чатбот с помощью OpenAI Assistant`,
+    description = `Onaychat - это открытая платформа для создания чатботов с использованием API OpenAI Assistant. Мы предлагаем бесшовную интеграцию для безупречного включения чатбота в ваш сайт.`,
     image = "https://openassistantgpt.io/thumbnail.png",
     icons = [
         {
@@ -55,7 +55,7 @@ export function constructMetadata({
             creator: "@oassistantgpt",
         },
         icons,
-        metadataBase: new URL('https://openassistantgpt.io'),
+        metadataBase: new URL('https://onaychat.vercel.app'),
         ...(noIndex && {
             robots: {
                 index: false,

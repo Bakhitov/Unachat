@@ -43,7 +43,7 @@ export function FileUploadButton({
             ) : (
                 <Icons.add className="mr-2 h-4 w-4" />
             )}
-            Upload file
+            Загрузить файл
         </button>
     )
 }

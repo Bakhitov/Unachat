@@ -1,14 +1,13 @@
 import { SiteConfig } from "@/types"
 
 export const siteConfig: SiteConfig = {
-  name: "OpenAssistantGPT",
+  name: "Onaychat",
   description:
-    "An Open-Source SaaS Platform for Crafting Chatbots with OpenAI's Assistant.",
-  url: "https://www.openassistantgpt.io/",
+    "Onaychat - An SaaS Platform for Crafting Chatbots with OpenAI's Assistant.",
+  url: process.env.NEXTAUTH_URL || "https://onaychat.vercel.app",
   ogImage: "https://www.openassistantgpt.io/dashboard.png",
   links: {
-    twitter: "https://twitter.com/oassistantgpt",
-    github: "https://github.com/OpenAssistantGPT",
-    productHunt: "https://www.producthunt.com/posts/openassistantgpt",
+    twitter: "https://twitter.com/onaychat",
+    instagram: "https://www.instagram.com/onaychat",
   },
 }

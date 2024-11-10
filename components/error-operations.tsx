@@ -40,14 +40,14 @@ export function ErrorOperations({ error }: ErrorOperationsProps) {
 
         if (!response?.ok) {
             toast({
-                title: "Something went wrong.",
-                description: "Your file was not deleted. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваша ошибка не была удалена. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         } else {
             toast({
-                title: "Error deleted.",
-                description: "Your error was successfully deleted.",
+                title: "Ошибка удалена.",
+                description: "Ваша ошибка была успешно удалена.",
                 variant: "default",
             })
         }
@@ -61,14 +61,14 @@ export function ErrorOperations({ error }: ErrorOperationsProps) {
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-muted">
                     <Icons.ellipsis className="h-4 w-4" />
-                    <span className="sr-only">Download</span>
+                    <span className="sr-only">Скачать</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                     <DropdownMenuItem
                         className="flex cursor-pointer items-center text-destructive focus:text-destructive"
                         onSelect={() => setShowDeleteAlert(true)}
                     >
-                        Delete
+                        Удалить
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -76,14 +76,14 @@ export function ErrorOperations({ error }: ErrorOperationsProps) {
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle>
-                            Are you sure you want to delete this error?
+                            Вы уверены, что хотите удалить эту ошибку?
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            This action cannot be undone.
+                            Это действие не может быть отменено.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>Отмена</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={async (event: { preventDefault: () => void }) => {
                                 event.preventDefault()
@@ -102,7 +102,7 @@ export function ErrorOperations({ error }: ErrorOperationsProps) {
                             ) : (
                                 <Icons.trash className="mr-2 h-4 w-4" />
                             )}
-                            <span>Delete</span>
+                            <span>Удалить</span>
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

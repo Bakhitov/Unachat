@@ -6,8 +6,8 @@ export default function CrawlersSettingsLoading() {
     return (
         <DashboardShell>
             <DashboardHeader
-                heading="Onboarding"
-                text="Create your first chatbot"
+                heading="Быстрый старт"
+                text="Создайте свой первый чатбот"
             />
             <div className="grid gap-10">
                 <CardSkeleton />

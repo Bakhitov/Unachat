@@ -64,14 +64,14 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
 
         if (!response?.ok) {
             return toast({
-                title: "Something went wrong.",
-                description: "Your crawler was not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш краулер не был обновлен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your crawler has been updated.",
+            description: "Ваш краулер был успешно обновлен.",
         })
 
         router.refresh()
@@ -86,9 +86,9 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Crawlers settings</CardTitle>
+                        <CardTitle>Настройки краулера</CardTitle>
                         <CardDescription>
-                            Update your crawler configuration.
+                            Обновите конфигурацию вашего краулера.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -98,7 +98,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="name">
-                                        Display Name
+                                        Отображаемое название
                                     </FormLabel>
                                     <Input
                                         defaultValue={crawler?.name || ""}
@@ -106,7 +106,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                                         id="name"
                                     />
                                     <FormDescription>
-                                        The name that will be displayed in the dashboard
+                                        Отображаемое название в панели управления
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -118,7 +118,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="crawlUrl">
-                                        Crawling URL
+                                        URL для краулинга
                                     </FormLabel>
                                     <Input
                                         defaultValue={crawler?.crawlUrl || ""}
@@ -126,7 +126,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                                         id="crawlUrl"
                                     />
                                     <FormDescription>
-                                        The URL that we will start the crawling on. Make sure the URL starts with the protocol https:// or http://
+                                        URL, с которого мы начнем краулинг. Убедитесь, что URL начинается с протокола https:// или http://
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -146,7 +146,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                                         id="urlmatch"
                                     />
                                     <FormDescription>
-                                        When we crawl we will make sure to always match with this string.
+                                        Когда мы краулим, мы будем всегда соответствовать этой строке.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -158,7 +158,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="selector">
-                                        Selector
+                                        Селектор
                                     </FormLabel>
                                     <Input
                                         defaultValue={crawler?.selector || ""}
@@ -166,8 +166,8 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                                         id="selector"
                                     />
                                     <FormDescription>
-                                        The selector will be used by the query selector to get the content from a specific part of the website. You can test your query selector when you open your website with F12 in the console and do this: document.querySelector(&quot;[id=&apos;root&apos;]&quot;).
-                                        If you want to extract all the content simply use: &apos;body&apos;
+                                        Селектор будет использоваться для выбора содержимого из определенной части веб-сайта. Вы можете протестировать ваш селектор, когда откроете ваш веб-сайт с F12 в консоли и выполните это: document.querySelector(&quot;[id=&apos;root&apos;]&quot;).
+                                        Если вы хотите извлечь все содержимое, просто используйте: &apos;body&apos;
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -179,7 +179,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="maxPagesToCrawl">
-                                        Number of pages to crawl
+                                        Количество страниц для краулинга
                                     </FormLabel>
                                     <Input
                                         id="maxPagesToCrawl"
@@ -188,8 +188,8 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                                         value={field.value}
                                     />
                                     <FormDescription>
-                                        Set a maximum of pages to crawl. You can choose a number between 1 and 200.
-                                        If you have more than 200 pages we recommend using your API or other solution to get the data.
+                                        Установите максимальное количество страниц для краулинга. Вы можете выбрать число от 1 до 200.
+                                        Если у вас более 200 страниц, мы рекомендуем использовать ваш API или другую решение для получения данных.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -205,7 +205,7 @@ export function CrawlerForm({ crawler, className, ...props }: CrawlerFormProps) 
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

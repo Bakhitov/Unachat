@@ -44,14 +44,14 @@ export function FileOperations({ file }: FileOperationsProps) {
 
         if (!response?.ok) {
             toast({
-                title: "Something went wrong.",
-                description: "Your file was not deleted. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш файл не был удален. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         } else {
             toast({
-                title: "File deleted.",
-                description: "Your file was successfully deleted.",
+                title: "Файл удален.",
+                description: "Ваш файл был успешно удален.",
                 variant: "default",
             })
         }
@@ -65,12 +65,12 @@ export function FileOperations({ file }: FileOperationsProps) {
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex h-8 w-8 items-center justify-center rounded-md border transition-colors hover:bg-muted">
                     <Icons.ellipsis className="h-4 w-4" />
-                    <span className="sr-only">Download</span>
+                    <span className="sr-only">Скачать</span>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                     <DropdownMenuItem>
                         <Link href={file?.blobUrl as Url} className="flex w-full">
-                            Download
+                            Скачать
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -78,7 +78,7 @@ export function FileOperations({ file }: FileOperationsProps) {
                         className="flex cursor-pointer items-center text-destructive focus:text-destructive"
                         onSelect={() => setShowDeleteAlert(true)}
                     >
-                        Delete
+                        Удалить
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
@@ -86,10 +86,10 @@ export function FileOperations({ file }: FileOperationsProps) {
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle>
-                            Are you sure you want to delete this file?
+                            Вы уверены, что хотите удалить этот файл?
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            This action cannot be undone.
+                            Это действие не может быть отменено.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
@@ -112,7 +112,7 @@ export function FileOperations({ file }: FileOperationsProps) {
                             ) : (
                                 <Icons.trash className="mr-2 h-4 w-4" />
                             )}
-                            <span>Delete</span>
+                            <span>Удалить</span>
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

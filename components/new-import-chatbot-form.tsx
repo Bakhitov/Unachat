@@ -66,26 +66,26 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             } else if (response.status === 402) {
                 return toast({
-                    title: "Chatbot limit reached.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Предел чатботов достигнут.",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not saved. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был сохранен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been saved.",
+            description: "Ваш чатбот был успешно сохранен.",
         })
 
         eventGA({
@@ -107,7 +107,7 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Import a Chatbot</CardTitle>
+                        <CardTitle>Импортировать чатбот</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField
@@ -116,14 +116,14 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="name">
-                                        Display Name
+                                        Отображаемое название
                                     </FormLabel>
                                     <Input
                                         onChange={field.onChange}
                                         id="name"
                                     />
                                     <FormDescription>
-                                        The name that will be displayed in the dashboard
+                                        Отображаемое название в панели управления
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -142,8 +142,8 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                                         id="openAIAssistantId"
                                     />
                                     <FormDescription>
-                                        The OpenAI Assistant ID that already exists in your OpenAI account.
-                                        You can find your Assistant ID in the <Link target="_blank" className="underline" href="https://platform.openai.com/assistants">OpenAI Assistant Dashboard</Link>.
+                                        ID OpenAI Assistant, который уже существует в вашем аккаунте OpenAI.
+                                        Вы можете найти ID вашего помощника в <Link target="_blank" className="underline" href="https://platform.openai.com/assistants">OpenAI Assistant Dashboard</Link>.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -155,7 +155,7 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="welcomemessage">
-                                        Welcome message
+                                        Приветственное сообщение
                                     </FormLabel>
                                     <Input
                                         onChange={field.onChange}
@@ -163,7 +163,7 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                                         id="welcomemessage"
                                     />
                                     <FormDescription>
-                                        The welcome message that will be sent to the user when they start a conversation
+                                        Приветственное сообщение, которое будет отправлено пользователю при начале диалога
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>)}
@@ -182,8 +182,8 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                                         type="password"
                                     />
                                     <FormDescription>
-                                        The OpenAI API key that will be used to generate responses
-                                        You can create your API Key <Link target="_blank" className="underline" href='https://platform.openai.com/api-keys'>here</Link>.
+                                        API ключ OpenAI, который будет использоваться для генерации ответов
+                                        Вы можете создать API ключ <Link target="_blank" className="underline" href='https://platform.openai.com/api-keys'>здесь</Link>.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -195,7 +195,7 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="chatbotErrorMessage">
-                                        Chatbot Error Message
+                                        Сообщение об ошибке чатбота
                                     </FormLabel>
                                     <Textarea
                                         value={field.value}
@@ -203,7 +203,7 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                                         id="chatbotErrorMessage"
                                     />
                                     <FormDescription>
-                                        The message that will be displayed when the chatbot encounters an error and can&apos;t reply to a user.
+                                        Сообщение, которое будет отображаться, когда чатбот встречает ошибку и не может ответить пользователю.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -219,7 +219,7 @@ export function ImportChatbotForm({ className, ...props }: ImportChatbotProps) {
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Create</span>
+                            <span>Создать</span>
                         </button>
                     </CardFooter>
                 </Card>

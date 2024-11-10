@@ -60,14 +60,14 @@ export function NotificationSettingsForm({ user, inquiryNotificationEnabled, mar
 
         if (!response?.ok) {
             return toast({
-                title: "Something went wrong.",
-                description: "Your notification settings are not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваши настройки уведомлений не обновлены. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your notification settings are now updated.",
+            description: "Ваши настройки уведомлений теперь обновлены.",
         })
 
         router.refresh()
@@ -82,9 +82,9 @@ export function NotificationSettingsForm({ user, inquiryNotificationEnabled, mar
             >
                 <Card>
                     <CardHeader>
-                        <CardTitle>Notifications Settings</CardTitle>
+                        <CardTitle>Настройки уведомлений</CardTitle>
                         <CardDescription>
-                            Configure all your notification preferences here.
+                            Настройте все ваши настройки уведомлений здесь.
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
@@ -94,10 +94,10 @@ export function NotificationSettingsForm({ user, inquiryNotificationEnabled, mar
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>
-                                        New Inquiry Notification
+                                        Новое обращение
                                     </FormLabel>
                                     <FormDescription>
-                                        Get a notification when a new inquiry is received.
+                                        Получайте уведомление, когда получено новое обращение.
                                     </FormDescription>
                                     <FormControl>
                                         <Switch
@@ -115,10 +115,10 @@ export function NotificationSettingsForm({ user, inquiryNotificationEnabled, mar
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>
-                                        Marketing Emails
+                                        Маркетинговые письма
                                     </FormLabel>
                                     <FormDescription>
-                                        Receive our marketing emails. New features, updates, and more.
+                                        Получайте наши маркетинговые письма. Новые функции, обновления и многое другое.
                                     </FormDescription>
                                     <FormControl>
                                         <Switch
@@ -140,7 +140,7 @@ export function NotificationSettingsForm({ user, inquiryNotificationEnabled, mar
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Save</span>
+                            <span>Сохранить</span>
                         </button>
                     </CardFooter>
                 </Card>

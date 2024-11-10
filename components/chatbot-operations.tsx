@@ -42,14 +42,14 @@ export function ChatbotOperations({ chatbot }: ChatbotOperationsProps) {
 
         if (!response?.ok) {
             toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not deleted. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был удален. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         } else {
             toast({
-                title: "Chatbot deleted.",
-                description: "Your chatbot was successfully deleted.",
+                title: "Чатбот удален.",
+                description: "Ваш чатбот был успешно удален.",
                 variant: "default",
             })
         }
@@ -66,27 +66,27 @@ export function ChatbotOperations({ chatbot }: ChatbotOperationsProps) {
                 <DropdownMenuContent align="end">
                     <DropdownMenuItem>
                         <Link href={`/dashboard/chatbots/${chatbot.id}/chat`} className="flex w-full">
-                            Chat
+                            Чат
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href={`/dashboard/chatbots/${chatbot.id}`} className="flex w-full">
-                            Settings
+                            Настройки
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href={`/dashboard/chatbots/${chatbot.id}/embed`} className="flex w-full">
-                            Embed On Website
+                            Встраивание на сайт
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href={`/dashboard/chatbots/${chatbot.id}/inquiries`} className="flex w-full">
-                            User Inquiries
+                            Пользовательские запросы
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href={`/dashboard/chatbots/${chatbot.id}/errors`} className="flex w-full">
-                            Errors
+                            Ошибки
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -94,7 +94,7 @@ export function ChatbotOperations({ chatbot }: ChatbotOperationsProps) {
                         className="flex cursor-pointer items-center text-destructive focus:text-destructive"
                         onSelect={() => setShowDeleteAlert(true)}
                     >
-                        Delete
+                        Удалить
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu >
@@ -102,14 +102,14 @@ export function ChatbotOperations({ chatbot }: ChatbotOperationsProps) {
                 <AlertDialogContent>
                     <AlertDialogHeader>
                         <AlertDialogTitle>
-                            Are you sure you want to delete this chatbot?
+                            Вы уверены, что хотите удалить этот чатбот?
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            This action cannot be undone.
+                            Это действие не может быть отменено.
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>Отменить</AlertDialogCancel>
                         <AlertDialogAction
                             onClick={async (event: { preventDefault: () => void }) => {
                                 event.preventDefault()
@@ -130,7 +130,7 @@ export function ChatbotOperations({ chatbot }: ChatbotOperationsProps) {
                             ) : (
                                 <Icons.trash className="mr-2 h-4 w-4" />
                             )}
-                            <span>Delete</span>
+                            <span>Удалить</span>
                         </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

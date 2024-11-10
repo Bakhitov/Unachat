@@ -47,20 +47,20 @@ export function SupportInquiry({chatbot,  threadId}: {chatbot: ClientSideChatbot
 
         if (response.ok) {
             toast({
-                title: 'Inquiry sent',
-                description: 'Your inquiry has been sent successfully',
+                title: 'Запрос отправлен',
+                description: 'Ваш запрос был отправлен успешно',
             })
         } else if (response.status === 409) {
             toast({
-                title: 'Inquiry already sent',
-                description: 'You have already sent an inquiry for this conversation',
+                title: 'Запрос уже отправлен',
+                description: 'Вы уже отправили запрос для этого диалога',
                 variant: 'destructive',
             })
         } else {
             console.error(`Failed to send inquiry: ${response}`)
             toast({
-                title: 'Error',
-                description: 'Failed to send inquiry',
+                title: 'Ошибка',
+                description: 'Не удалось отправить запрос',
                 variant: 'destructive'
             })
         }

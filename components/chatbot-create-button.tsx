@@ -31,8 +31,8 @@ export function ChatbotCreateButton({
 
         if (files.length === 0) {
             toast({
-                title: "No file found.",
-                description: "Please upload a file or create a crawler to import content.",
+                title: "Файл не найден.",
+                description: "Пожалуйста, загрузите файл или создайте веб-скрапер для импорта контента.",
                 variant: "destructive",
             })
             setIsLoading(false)
@@ -69,7 +69,7 @@ export function ChatbotCreateButton({
                     ) : (
                         <Icons.add className="mr-2 h-4 w-4" />
                     )}
-                    New Chatbot
+                    Новый чатбот
                 </button>
 
             </DropdownMenuTrigger>
@@ -81,7 +81,7 @@ export function ChatbotCreateButton({
                             className="flex cursor-pointer items-center text-primary focus:text-primary"
                         >
                             <Icons.badgeplus className="mr-2 h-4 w-4" />
-                            Create Chatbot
+                            Создать чатбота
                         </span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
@@ -90,7 +90,7 @@ export function ChatbotCreateButton({
                             className="flex cursor-pointer items-center text-primary focus:text-primary"
                         >
                             <Icons.import className="mr-2 h-4 w-4" />
-                            Import OpenAI Assistant
+                            Импортировать OpenAI Assistant
                         </span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>

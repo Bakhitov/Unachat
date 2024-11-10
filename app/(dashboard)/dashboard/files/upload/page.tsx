@@ -21,7 +21,7 @@ export default async function UploadFilePage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Upload file" text="Upload a file and then you'll be able to use it with your chatbot.">
+            <DashboardHeader heading="Загрузить файл" text="Загрузите файл, и тогда вы сможете использовать его с вашим чатботом.">
                 <Link
                     href="/dashboard/files"
                     className={cn(
@@ -31,7 +31,7 @@ export default async function UploadFilePage() {
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>

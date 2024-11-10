@@ -24,7 +24,7 @@ export default function IndexPage() {
             Найти нас в 𝕏
           </Link>
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            Создать AI чат-бота с помощью Unachat
+            Создать AI чат-бота с помощью Onaychat
           </h1>
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             Платформа для создания чат-ботов с помощью API Assistant. Мы предлагаем бесшовную интеграцию для безупречного включения чат-бота на ваш сайт.
@@ -185,7 +185,7 @@ export default function IndexPage() {
       <section data-aos="fade-up" id="low-code" className="container space-y-6 py-12 md:py-24 lg:py-32">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Низкий код и легко реализовать
+            Простой скрипт, легко вставляется в любой сайт
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
             Наш чат-бот требует минимального количества кода для реализации на вашем сайте.
@@ -215,10 +215,10 @@ export default function IndexPage() {
                   Идеально для персональных проектов, экспериментов или просто для изучения наших мощных инструментов.
                 </p>
                 <ul className="space-y-1">
-                  <li>✓ {freePlan.maxChatbots} Chatbot</li>
-                  <li>✓ {freePlan.maxCrawlers} Crawler</li>
-                  <li>✓ {freePlan.maxFiles} Files</li>
-                  <li>✓ {freePlan.maxMessagesPerMonth} Messages per Month</li>
+                  <li>✓ {freePlan.maxChatbots} Чат-ботов</li>
+                  <li>✓ {freePlan.maxCrawlers} Парсеров</li>
+                  <li>✓ {freePlan.maxFiles} Файлов</li>
+                  <li>✓ {freePlan.maxMessagesPerMonth} Сообщений в месяц</li>
                 </ul>
               </CardContent>
             </Card>
@@ -240,7 +240,7 @@ export default function IndexPage() {
                   <li>✓ {basicPlan.maxFiles} Файлы</li>
                   <li>✓ Настройки</li>
                   <li>✓ Неограниченные сообщения</li>
-                  <li>✓ Запрос клиента / Сбор лидов</li>
+                  <li>✓ Заявки клиентов / Сбор лидов</li>
                 </ul>
               </CardContent>
             </Card>
@@ -259,8 +259,8 @@ export default function IndexPage() {
                   <li>✓ {proPlan.maxFiles} Файлы</li>
                   <li>✓ Настройки</li>
                   <li>✓ Неограниченные сообщения</li>
-                  <li>✓ Запрос клиента / Сбор лидов</li>
-                  <li>✓ Удаление &apos; разработано с помощью Unacha&apos;</li>
+                  <li>✓ Заявки клиентов / Сбор лидов</li>
+                  <li>✓ Удаление лейбла разработано c Onaychat</li>
                   <li>✓ Прикрепление файлов</li>
                 </ul>
               </CardContent>

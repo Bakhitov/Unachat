@@ -11,7 +11,7 @@ import { ChatbotItem } from "@/components/chatbot-item"
 import { siteConfig } from "@/config/site"
 
 export const metadata = {
-  title: `${siteConfig.name} - Chatbots`,
+  title: `${siteConfig.name} - Чатботы`,
 }
 
 export default async function ChatbotsPage() {
@@ -45,7 +45,7 @@ export default async function ChatbotsPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading="Chatbots" text="Create and manage your chatbots.">
+      <DashboardHeader heading="Чатботы" text="Создавайте и управляйте вашими чатботами.">
         <ChatbotCreateButton />
       </DashboardHeader>
       <div>
@@ -58,9 +58,9 @@ export default async function ChatbotsPage() {
         ) : (
           <EmptyPlaceholder>
             <EmptyPlaceholder.Icon name="bot" />
-            <EmptyPlaceholder.Title>No chatbot created</EmptyPlaceholder.Title>
+            <EmptyPlaceholder.Title>Нет созданных чатботов</EmptyPlaceholder.Title>
             <EmptyPlaceholder.Description>
-              You don&apos;t have any chatbot yet. Start creating.
+              Вы не создали еще ни одного чатбота. Начните создавать.
             </EmptyPlaceholder.Description>
             <ChatbotCreateButton variant="outline" />
           </EmptyPlaceholder>

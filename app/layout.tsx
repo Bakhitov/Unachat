@@ -18,7 +18,7 @@ const fontSans = FontSans({
 })
 
 const fontHeading = localFont({
-  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  src: "../assets/fonts/Inter-Bold.ttf",
   variable: "--font-heading",
 })
 

@@ -40,11 +40,11 @@ export async function PATCH(
         const payload = advancedSettingsSchema.parse(body)
 
         if (payload.maxCompletionTokens && payload.maxCompletionTokens <= 255) {
-            return new Response("Max completion tokens must be at least 256", { status: 400 })
+            return new Response("Максимальное кол-во токенов завершения должно быть не менее 256", { status: 400 })
         }
 
         if (payload.maxPromptTokens && payload.maxPromptTokens <= 255) {
-            return new Response("Max prompt tokens must be at least 256", { status: 400 })
+            return new Response("Максимальное кол-во токенов запроса должно быть не менее 256", { status: 400 })
         }
 
 
@@ -70,7 +70,7 @@ export async function PATCH(
         }
 
         if (error instanceof RequiresHigherPlanError) {
-            return new Response("Requires Higher Plan", { status: 402 })
+            return new Response("Требуется более высокий план", { status: 402 })
         }
 
         return new Response(null, { status: 500 })

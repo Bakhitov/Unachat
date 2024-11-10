@@ -51,7 +51,7 @@ export default function MarketingLayout({
                 "px-4 border shadow-md"
               )}
             >
-              Login
+              Войти
             </Link>
           </nav>
         </div>

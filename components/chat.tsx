@@ -121,8 +121,8 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
     } else {
       console.error(`Failed to send inquiry: ${response}`)
       toast({
-        title: 'Error',
-        description: 'Failed to send inquiry',
+        title: 'Ошибка',
+        description: 'Не удалось отправить запрос',
         variant: 'destructive'
       })
     }
@@ -180,10 +180,10 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
                   }}
                 >
                   <Icons.reload style={{ color: chatbot.chatHeaderTextColor }} className="h-4 w-4" />
-                  <span className="sr-only">New Chat</span>
+                  <span className="sr-only">Новый чат</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>New Chat</TooltipContent>
+              <TooltipContent>Новый чат</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -197,10 +197,10 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
                     style={{ color: chatbot.chatHeaderTextColor }}
                     className="h-4 w-4"
                   />
-                  <span className="sr-only">Download Transcript</span>
+                  <span className="sr-only">Скачать транскрипцию</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Download Transcript</TooltipContent>
+              <TooltipContent>Скачать транскрипцию</TooltipContent>
             </Tooltip>
             {withExitX &&
               <div className="items-end">
@@ -210,7 +210,7 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
                       <Icons.close style={{ color: chatbot.chatHeaderTextColor }} className="h-5 w-5 text-gray-500" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>Exit Chat</TooltipContent>
+                  <TooltipContent>Выйти из чата</TooltipContent>
                 </Tooltip>
               </div>
             }
@@ -372,7 +372,7 @@ export function Chat({ chatbot, defaultMessage, className, withExitX = false, cl
                           <span className="sr-only">Send message</span>
                         </Button>
                       </TooltipTrigger>
-                      <TooltipContent>Send message</TooltipContent>
+                      <TooltipContent>Отправить сообщение</TooltipContent>
                     </Tooltip>
                   </div>
                 </div>

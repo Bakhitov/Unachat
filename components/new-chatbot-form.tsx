@@ -1,10 +1,12 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
+import Link from "next/link"
+import Select from 'react-select'
 
 import { eventGA } from "@/lib/googleAnalytics"
 import { cn } from "@/lib/utils"
@@ -22,9 +24,7 @@ import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 import { chatbotSchema } from "@/lib/validations/chatbot"
 import { ChatbotModel, File, User } from "@prisma/client"
-import Select from 'react-select';
 import { Textarea } from "@/components/ui/textarea"
-import Link from "next/link"
 
 type FormData = z.infer<typeof chatbotSchema>
 
@@ -33,15 +33,19 @@ interface NewChatbotProps extends React.HTMLAttributes<HTMLElement> {
     user: Pick<User, "id">
 }
 
+interface Option {
+    value: string
+    label: string
+}
 
 export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbotProps) {
     const router = useRouter()
     const form = useForm<FormData>({
         resolver: zodResolver(chatbotSchema),
         defaultValues: {
-            welcomeMessage: "Hello, how can I help you?",
-            prompt: "You are an assistant you help users that visit our website, keep it short, always refer to the documentation provided and never ask for more information.",
-            chatbotErrorMessage: "Oops! An error has occurred. If the issue persists, feel free to reach out to our support team for assistance. We're here to help!"
+            welcomeMessage: "Привет, как я могу помочь вам?",
+            prompt: "Вы - помощник, который помогает пользователям, посещающим наш сайт, держите ответы короткими, всегда ссылаясь на предоставленную документацию и никогда не просите больше информации.",
+            chatbotErrorMessage: "Ой! Произошла ошибка. Если проблема не устранена, пожалуйста, обратитесь в нашу службу поддержки за помощью. Мы здесь, чтобы помочь!"
         }
     })
 
@@ -49,6 +53,29 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
     const [availablesModels, setAvailablesModels] = useState<string[]>([])
     const [files, setFiles] = useState<File[]>([])
     const [isSaving, setIsSaving] = useState<boolean>(false)
+
+    const getAvailableModels = useCallback(async () => {
+        const response = await fetch(`/api/users/${props.user.id}/openai/models`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        const models = await response.json()
+        return models
+    }, [props.user.id])
+
+    async function getFiles() {
+        const response = await fetch('/api/files', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+
+        const files = await response.json()
+        return files
+    }
 
     useEffect(() => {
         const init = async () => {
@@ -68,30 +95,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
             setFiles(filesResponse)
         }
         init()
-    }, [])
-
-    async function getFiles() {
-        const response = await fetch('/api/files', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-
-        const files = await response.json()
-        return files
-    }
-
-    async function getAvailableModels() {
-        const response = await fetch(`/api/users/${props.user.id}/openai/models`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-        const models = await response.json()
-        return models
-    }
+    }, [getAvailableModels])
 
     async function onSubmit(data: FormData) {
         setIsSaving(true)
@@ -118,31 +122,31 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
         if (!response?.ok) {
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             } else if (response.status === 402) {
                 return toast({
-                    title: "Chatbot limit reached.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Превышен лимит чатботов.",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
             return toast({
-                title: "Something went wrong.",
-                description: "Your chatbot was not saved. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Ваш чатбот не был сохранен. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your chatbot has been saved.",
+            description: "Ваш чатбот был сохранен.",
         })
 
         eventGA({
             action: 'chatbot_created',
-            label: 'Chatbot Created',
+            label: 'Чатбот создан',
             value: data.name
         });
 
@@ -159,7 +163,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Create new Chatbot</CardTitle>
+                        <CardTitle>Создать новый чатбот</CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <FormField
@@ -168,14 +172,14 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="name">
-                                        Display Name
+                                        Отображаемое имя
                                     </FormLabel>
                                     <Input
                                         onChange={field.onChange}
                                         id="name"
                                     />
                                     <FormDescription>
-                                        The name that will be displayed in the dashboard
+                                        Отображаемое имя, которое будет отображаться в панели управления
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -187,7 +191,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="welcomemessage">
-                                        Welcome message
+                                        Приветственное сообщение
                                     </FormLabel>
                                     <Input
                                         onChange={field.onChange}
@@ -195,7 +199,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                                         id="welcomemessage"
                                     />
                                     <FormDescription>
-                                        The welcome message that will be sent to the user when they start a conversation
+                                        Приветственное сообщение, которое будет отправлено пользователю при начале диалога
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>)}
@@ -206,7 +210,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="prompt">
-                                        Default prompt
+                                        Промпт по умолчанию
                                     </FormLabel >
                                     <Textarea
                                         onChange={field.onChange}
@@ -214,8 +218,8 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                                         id="prompt"
                                     />
                                     <FormDescription>
-                                        The prompt that will be sent to OpenAI for every messages, here&apos;s and example:
-                                        &quot;You are an assistant you help users that visit our website, keep it short, always refer to the documentation provided and never ask for more information.&quot;
+                                        По умолчанию, который будет отправлен в OpenAI для каждого сообщения, вот пример:
+                                        &quot;Вы - помощник, который помогает пользователям, посещающим наш сайт, держите ответы короткими, всегда ссылаясь на предоставленную документацию и никогда не просите больше информации.&quot;
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -227,23 +231,24 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="files">
-                                        Choose your file for retrival
+                                        Выберите файл для поиска
                                     </FormLabel>
-                                    <Select
+                                    <Select<Option, true>
                                         isMulti
                                         closeMenuOnSelect={false}
                                         onChange={value => field.onChange(value.map((v) => v.value))}
-                                        defaultValue={field.value}
+                                        value={files.map(file => ({ value: file.id, label: file.name })).filter(option => 
+                                            field.value?.includes(option.value)
+                                        )}
                                         name="files"
                                         id="files"
                                         options={files.map((file) => ({ value: file.id, label: file.name }))}
                                         className="basic-multi-select"
                                         classNamePrefix="select"
                                     />
-
                                     <FormDescription>
-                                        The OpenAI model will use this file to search for specific content.
-                                        If you don&apos;t have a file yet, it is because you haven&apos;t published any file.
+                                        OpenAI модель будет использовать этот файл для поиска конкретного контента.
+                                            Если у вас нет файла, это потому, что вы не опубликовали его.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -255,23 +260,29 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="modelId">
-                                        OpenAI Model
+                                        OpenAI модель
                                     </FormLabel>
-                                    <Select
-                                        onChange={value => field.onChange(value!.value)}
-                                        defaultValue={field.value}
+                                    <Select<Option>
+                                        onChange={value => field.onChange(value?.value)}
+                                        value={models
+                                            .filter(model => model.id === field.value)
+                                            .map(model => ({
+                                                value: model.id,
+                                                label: model.name
+                                            }))[0]}
                                         id="modelId"
-                                        options={
-                                            models.filter((model: ChatbotModel) => availablesModels.includes(model.name)).map((model: ChatbotModel) => (
-                                                { value: model.id, label: model.name }
-                                            ))
-                                        }
+                                        options={models
+                                            .filter((model: ChatbotModel) => availablesModels.includes(model.name))
+                                            .map((model: ChatbotModel) => ({
+                                                value: model.id,
+                                                label: model.name
+                                            }))}
                                         className="basic-multi-select"
                                         classNamePrefix="select"
                                     />
                                     <FormDescription>
-                                        The OpenAI model that will be used to generate responses.
-                                        <b> If you don&apos;t have the gpt-4 option and want to use it. You need to have an OpenAI account at least tier 1.</b>
+                                        OpenAI модель, которая будет использоваться для генерации ответов.
+                                        <b> Если у вас нет gpt-4 опции и вы хотите ее использовать, вам нужно иметь учетную запись OpenAI по крайней мере на уровне 1.</b>
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -291,8 +302,8 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                                         type="password"
                                     />
                                     <FormDescription>
-                                        The OpenAI API key that will be used to generate responses.
-                                        You can create your API Key <Link target="_blank" className="underline" href='https://platform.openai.com/api-keys'>here</Link>.
+                                        API ключ OpenAI, который будет использоваться для генерации ответов.
+                                        Вы можете создать API ключ <Link target="_blank" className="underline" href='https://platform.openai.com/api-keys'>здесь</Link>.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -304,7 +315,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel htmlFor="chatbotErrorMessage">
-                                        Chatbot Error Message
+                                        Сообщение при ошибке чатбота
                                     </FormLabel>
                                     <Textarea
                                         value={field.value}
@@ -312,7 +323,7 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                                         id="chatbotErrorMessage"
                                     />
                                     <FormDescription>
-                                        The message that will be displayed when the chatbot encounters an error and can&apos;t reply to a user.
+                                        Сообщение, которое будет отображаться, когда чатбот встречает ошибку и не может ответить пользователю.
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
@@ -328,11 +339,11 @@ export function NewChatbotForm({ isOnboarding, className, ...props }: NewChatbot
                             {isSaving && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
-                            <span>Create</span>
+                            <span>Создать</span>
                         </button>
                     </CardFooter>
                 </Card>
-            </form >
-        </Form >
+            </form>
+        </Form>
     )
 }

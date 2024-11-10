@@ -42,7 +42,7 @@ export default async function EmbedOnSitePage({ params }: ChatbotSettingsProps) 
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Embed On Website" text="Make your chatbot publicly accessible for users.">
+            <DashboardHeader heading="Встраивание на сайт" text="Сделайте ваш чатбот доступным для пользователей.">
                 <Link
                     href={`/dashboard/chatbots`}
                     className={cn(
@@ -52,7 +52,7 @@ export default async function EmbedOnSitePage({ params }: ChatbotSettingsProps) 
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>
@@ -72,7 +72,7 @@ export default async function EmbedOnSitePage({ params }: ChatbotSettingsProps) 
     allowfullscreen allow="clipboard-read; clipboard-write" 
 >
 </iframe>
- <!-- This chatbot is build using https://openassistantgpt.io/ -->
+ <!-- Этот чатбот построен на https://onaychat.vercel.app/ -->
 `}>
                         </CodeBlock>
                     </div>
@@ -81,9 +81,9 @@ export default async function EmbedOnSitePage({ params }: ChatbotSettingsProps) 
 
                     <div className="space-y-4">
                         <div className="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
-                            <p className="font-bold text-md">Warning</p>
-                            <p className="text-sm">Depending on which platform you are adding our chatbot you may have to change the width and the height of the button. If you see a scroll bar it means the IFRAME is the wrong size and you have to change it.</p>
-                            <p className="text-sm">By default we have `width: 56px; height: 56px;` but if you see the scroll bar try to use `width: 60px; height: 60px;` </p>
+                            <p className="font-bold text-md">Внимание</p>
+                            <p className="text-sm">В зависимости от платформы, на которой вы добавляете наш чатбот, вам может потребоваться изменить ширину и высоту кнопки. Если вы видите полосу прокрутки, это означает, что IFRAME имеет неправильный размер, и вам нужно будет изменить его.</p>
+                            <p className="text-sm">По умолчанию у нас `width: 56px; height: 56px;` но если вы видите полосу прокрутки, попробуйте использовать `width: 60px; height: 60px;` </p>
                         </div>
                         <CodeBlock
                             language="html"
@@ -95,7 +95,7 @@ export default async function EmbedOnSitePage({ params }: ChatbotSettingsProps) 
   <iframe src="${siteConfig.url}embed/${params.chatbotId}/button?chatbox=false"
     style="z-index: 50; margin-right: 1rem; margin-bottom: 1rem; position: fixed; right: 0; bottom: 0; width: 56px; height: 56px; border: 0; border: 2px solid #e2e8f0; border-radius: 50%; color-scheme: none; background: none;box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);"
     id="openassistantgpt-chatbot-button-iframe"></iframe>
-  <!-- This chatbot is build using https://openassistantgpt.io/ -->
+  <!-- Этот чатбот построен на https://onaychat.vercel.app/ -->
   <iframe src="${siteConfig.url}embed/${params.chatbotId}/window?chatbox=false&withExitX=true"
     style="z-index: 50; margin-right: 1rem; margin-bottom: 6rem; display: none; position: fixed; right: 0; bottom: 0; pointer-events: none; overflow: hidden; height: 65vh; border: 2px solid #e2e8f0; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); width: 30rem;"
     allow="clipboard-read; clipboard-write"
@@ -136,7 +136,7 @@ export default function Chatbot() {
                 id="openassistantgpt-chatbot-button-iframe"
                 className="fixed bottom-0 right-0 mb-4 z-50 flex items-end inline-block mr-4 w-14 h-14 border border-gray-300 rounded-full shadow-md"
             ></iframe>
-            <!-- This chatbot is build using https://openassistantgpt.io/ -->
+            <!-- Этот чатбот построен на https://onaychat.vercel.app/ -->
             <iframe
                 src="${siteConfig.url}embed/${params.chatbotId}/window?chatbox=false&withExitX=true"
                 style={customStyle}

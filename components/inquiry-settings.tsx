@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -17,7 +18,6 @@ import {
 import { Switch } from "@/components/ui/switch"
 import { toast } from "@/components/ui/use-toast"
 import { Chatbot } from "@prisma/client"
-import { useEffect, useState } from "react"
 import { Icons } from "./icons"
 import { inquiryCustomizationSchema } from "@/lib/validations/inquiryCustomization"
 import { Input } from "@/components/ui/input"
@@ -28,7 +28,6 @@ interface ChatbotOperationsProps {
 }
 
 export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
-
     const [isSaving, setIsSaving] = useState<boolean>(false)
 
     const form = useForm<z.infer<typeof inquiryCustomizationSchema>>({
@@ -52,7 +51,7 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
             form.setValue("inquiryAutomaticReplyText", data.inquiryAutomaticReplyText)
             form.setValue("inquiryDisplayLinkAfterXMessage", data.inquiryDisplayLinkAfterXMessage)
         })
-    }, [])
+    }, [chatbot.id, form])
 
     async function onSubmit(data: z.infer<typeof inquiryCustomizationSchema>) {
         setIsSaving(true)
@@ -78,30 +77,29 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
         setIsSaving(false)
 
         if (!response?.ok) {
-
             if (response.status === 400) {
                 return toast({
-                    title: "Something went wrong.",
+                    title: "Что-то пошло не так.",
                     description: await response.text(),
                     variant: "destructive",
                 })
             } else if (response.status === 402) {
                 return toast({
-                    title: "Chatbot not customizable.",
-                    description: "Please upgrade to the a higher plan.",
+                    title: "Чатбот не настраиваемый.",
+                    description: "Пожалуйста, обновитесь до более высокого плана.",
                     variant: "destructive",
                 })
             }
 
             return toast({
-                title: "Something went wrong.",
-                description: "Your inquiry settings were not updated. Please try again.",
+                title: "Что-то пошло не так.",
+                description: "Настройки запроса не были обновлены. Пожалуйста, попробуйте снова.",
                 variant: "destructive",
             })
         }
 
         toast({
-            description: "Your inquiry settings are updated.",
+            description: "Настройки запроса были обновлены.",
         })
     }
 
@@ -117,10 +115,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Enable User Inquiry / Support Ticket Feature
+                                            Включить форму для заявок
                                         </FormLabel>
                                         <FormDescription>
-                                            Enable or disable the user inquiry feature. When enabled, users can send inquiries to the chatbot and you will see them in the dashboard.
+                                            Включить или отключить форму для заявок пользователя / поддержки. Когда включена, пользователи могут создавать заявки в чатбот и вы будете видеть их в панели управления.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -140,10 +138,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Inquiry Link Text
+                                            Текст формы заявки
                                         </FormLabel>
                                         <FormDescription>
-                                            The text that prompts users to click on the link, leading them to access the inquiry form.
+                                            Текст, который просит пользователей нажать на ссылку, ведущую к форме заявки.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -163,10 +161,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Inquiry Form Title Text
+                                            Заголовок формы заявки
                                         </FormLabel>
                                         <FormDescription>
-                                            The title text of the inquiry form.
+                                            Заголовок формы заявки.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -186,10 +184,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Inquiry Form Subtitle text
+                                            Подзаголовок формы заявки
                                         </FormLabel>
                                         <FormDescription>
-                                            The subtitle text of the inquiry form.
+                                            Подзаголовок формы заявки.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -209,10 +207,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Inquiry Automatic Reply Message Text
+                                            Текст автоматического ответа на заявку
                                         </FormLabel>
                                         <FormDescription>
-                                            The message sent to the user after they have submitted an inquiry.
+                                            Текст, который будет отправлен пользователю после того, как они отправят заявку.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -232,10 +230,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Email Input Label
+                                            Текст над полем ввода email
                                         </FormLabel>
                                         <FormDescription>
-                                            The label over the email input field
+                                            Текст, который будет отображаться над полем ввода email.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -255,10 +253,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Message Textarea Label
+                                            Текст над полем ввода сообщения
                                         </FormLabel>
                                         <FormDescription>
-                                            The label over the message textarea field
+                                            Текст, который будет отображаться над полем ввода сообщения.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -278,10 +276,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Text in the send button
+                                            Текст в кнопке отправки
                                         </FormLabel>
                                         <FormDescription>
-                                            The text displayed in the send button
+                                            Текст, который будет отображаться в кнопке отправки.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -301,10 +299,10 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                                 <FormItem className="flex flex-col justify-between rounded-lg border p-4">
                                     <div className="space-y-0.5">
                                         <FormLabel className="text-base">
-                                            Display Link After X Chatbot Reply
+                                            Отобразить ссылку после X ответов чатбота
                                         </FormLabel>
                                         <FormDescription>
-                                            The number of chatbot replies after which the inquiry link will be displayed to the user. We highly to one and the higher the number the lower the number of inquiry you will receive.
+                                        Количество ответов чатбота после которого будет отображаться форма заявки. Чем больше число, тем меньше заявок вы будете получать.
                                         </FormDescription>
                                     </div>
                                     <FormControl>
@@ -330,9 +328,9 @@ export function InquirySettings({ chatbot }: ChatbotOperationsProps) {
                     {isSaving && (
                         <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                     )}
-                    <span>Save</span>
+                    <span>Сохранить</span>
                 </button>
             </form>
-        </Form >
+        </Form>
     )
 }

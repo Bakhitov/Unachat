@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 
 export const metadata = {
-    title: `${siteConfig.name} - Support`,
+    title: `${siteConfig.name} - Поддержка`,
 }
 
 export default async function SupportPage() {
 
     return (
         <DashboardShell>
-            <DashboardHeader heading="Support" text="Welcome to Our Support Page.">
+            <DashboardHeader heading="Поддержка" text="Добро пожаловать на страницу поддержки.">
                 <Link
                     href="/dashboard"
                     className={cn(
@@ -24,16 +24,14 @@ export default async function SupportPage() {
                 >
                     <>
                         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-                        Back
+                        Назад
                     </>
                 </Link>
             </DashboardHeader>
             <div >
-                <p className="text-lg font-semibold">How can we help you?</p>
+                <p className="text-lg font-semibold">Как мы можем помочь вам?</p>
                 <p className="text-muted-foreground">
-                    First, before reaching out you can always try our chatbot. He knows a lot about our platform he might be able to help you.
-                    <br />
-                    If you still have issue with our app you can open a <a className="underline" href={siteConfig.links.github + '/issues'}>Github issue</a>, so we can help you to fix it and it will help us to improve our app.
+                    Прежде чем обратиться к нам, вы можете всегда попробовать нашего чат-бота. Он знает много о нашей платформе и может помочь вам.
                 </p>
                 <div className="min-w-[85%] min-h-[15rem] text-left items-left pt-6">
                     <iframe

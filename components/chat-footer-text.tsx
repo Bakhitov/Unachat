@@ -14,8 +14,8 @@ export function FooterText({ className, ...props }: React.ComponentProps<'p'>) {
             )}
             {...props}
         >
-            Powered by{' '}
-            <ExternalLink href={siteConfig.url}>OpenAssistantGPT</ExternalLink>
+            Разработано на{' '}
+            <ExternalLink href={siteConfig.url}>Onaychat</ExternalLink>
         </p>
     )
 }
